@@ -1,7 +1,6 @@
 site:
   title: NeoEMF - Website
-  url: https://neoemf.atlanmod.org/
-  start_page: NeoEMF:ROOT:index.adoc
+  url: https://sunye.github.io/neoemf-website/
 asciidoc:
   attributes:
     :plantuml-server-url: http://www.plantuml.com/plantuml
@@ -19,6 +18,6 @@ ui:
 runtime:
   cache_dir: ./.cache/antora
 output:
-  dir: ./public
+  dir: ./public/site
 
 
