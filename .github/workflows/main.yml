@@ -1,4 +1,4 @@
-name: Antora Test Site 
+name: NeoEMF Test Site Antora
 
 on:
   push:
