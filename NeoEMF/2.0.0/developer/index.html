@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Developers Guide :: NeoEMF - Website</title>
+    <meta name="generator" content="Antora 3.0.0-alpha.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sunye.github.io/neoemf-website">NeoEMF - Website</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="NeoEMF" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">NeoEMF Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">NeoEMF</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">index.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">NeoEMF Project</span>
+    <span class="version">2.0.0 2.0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">NeoEMF Project</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.0.0 2.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">NeoEMF Project</a></li>
+    <li><a href="index.html">Developers Guide</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/atlanmod/NeoEMF/edit/master/neoemf-doc/modules/developer/pages/index.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Developers Guide</h1>
+<div class="sect1">
+<h2 id="_project_organization"><a class="anchor" href="#_project_organization"></a>Project Organization</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_maven"><a class="anchor" href="#_maven"></a>Maven</h3>
+<div class="paragraph">
+<p>Except for some platform-specific artifacts, for instance Eclipse plugins, project should follow Apache Maven&#8217;s conventions.</p>
+</div>
+<div class="paragraph">
+<p>All software dependencies should be correctly declared in the Project Object Model (pom.xml file).
+Prefer use a <code>dependencyManagement</code> to manage the dependencies, and use <code>properties</code> to manage the dependencies version.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_package_organization"><a class="anchor" href="#_package_organization"></a>Package Organization</h3>
+<div class="paragraph">
+<p>Keep together classes that implement a same feature.
+Organize packages by features, not by layers.
+Read this <a href="http://www.javapractices.com/topic/TopicAction.do?Id=205">article</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>Avoid packages named <code>beans</code>, <code>exceptions</code>, <code>factories</code>, or <code>collections</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_conventions"><a class="anchor" href="#_code_conventions"></a>Code Conventions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Except for the cases enumerated below, the Java source code should follow Google&#8217;s Style Guide: <a href="https://google.github.io/styleguide/javaguide.html" class="bare">https://google.github.io/styleguide/javaguide.html</a></p>
+</div>
+<div class="sect2">
+<h3 id="_method_names"><a class="anchor" href="#_method_names"></a>Method Names</h3>
+<div class="paragraph">
+<p>Part of the source code is meant to be specialized by automatically generated code.
+To avoid naming conflicts, classes that belong to the <code>emf.ecore</code> hierarchy should avoid standard <em>Getter</em> and <em>Setter</em> names.</p>
+</div>
+<div class="paragraph">
+<p>For instance, access methods for an attribute named <code>foo</code> should be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">String foo();          // The Getter
+void foo(String str);  // The Setter</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Access methods from other classes should use standard names.</p>
+</div>
+<div class="paragraph">
+<p>Each class must manage its own fields.
+Except for special cases, getters and setters must not return a mutable collection.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_preconditions"><a class="anchor" href="#_preconditions"></a>Preconditions</h3>
+<div class="paragraph">
+<p>Use preconditions instead of assertions or comments for checking conditions that must always be true and invariants in method bodies.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void foo(int i) {
+  Preconditions.checkArgument(i &gt; 0 &amp;&amp; i &lt;= 12, "Out of range");
+  // Method code
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_annotations_jsr_305"><a class="anchor" href="#_annotations_jsr_305"></a>Annotations (JSR-305)</h3>
+<div class="paragraph">
+<p>Use JSR-305 annotations, such as <code>@Nonnull</code>, <code>@Nullable</code>, <code>@ParametersAreNonnullByDefault</code>, etc.
+These annotations are not processed at runtime, but are very useful for static code analysis.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_documentation"><a class="anchor" href="#_documentation"></a>Documentation</h3>
+<div class="paragraph">
+<p>Every packages, classes, methods and fields should be properly documented.</p>
+</div>
+<div class="paragraph">
+<p>The package documentation is located in <code>main/javadoc</code>, next to the <code>main/java</code> directory, and must only contains <code>package-info.java</code> files.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_software_quality"><a class="anchor" href="#_software_quality"></a>Software quality</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ideally, all methods should be tested in unit tests. For classes and methods related to data management, tests must also be created in the integration tests.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_design_tips"><a class="anchor" href="#_design_tips"></a>Design Tips</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_supertypes_should_not_depend_on_subtypes"><a class="anchor" href="#_supertypes_should_not_depend_on_subtypes"></a>Supertypes should not depend on subtypes.</h3>
+<div class="paragraph">
+<p>More precisely, an interface should not reference its implementation classes. For instance, the following code excerpt should be avoided:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public interface IFactory {
+  IFactory eINSTANCE = FactoryImpl.init();
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_contribute"><a class="anchor" href="#_how_to_contribute"></a>How to Contribute</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We are constantly looking to improve NeoEMF, and we are happy to receive any contribution that solves a bug, provides a new feature, or improves existing code base.
+This page summarizes the different solutions you have to help us.</p>
+</div>
+<div class="sect2">
+<h3 id="_report_issues"><a class="anchor" href="#_report_issues"></a>Report Issues</h3>
+<div class="paragraph">
+<p>NeoEMF is bundled with a test suite based on our usage experience and the issues we have solved in the past.
+We are using and testing it every day to improve the quality of the framework.
+However, we cannot spot all the bugs, or test all the possible application scenarios.</p>
+</div>
+<div class="paragraph">
+<p>If you experience any trouble when installing or using NeoEMF you can open an issue on the <a href="https://github.com/atlanmod/NeoEMF/issues">issue tracker</a>.
+Please make sure that a similar issue is not already opened.</p>
+</div>
+<div class="paragraph">
+<p>You can alternatively contact us directly through our mailing list <a href="<a href="mailto:neoemf@googlegroups.com">neoemf@googlegroups.com</a>">neoemf@googlegroups.com</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_contribute_to_the_code"><a class="anchor" href="#_contribute_to_the_code"></a>Contribute to the Code</h3>
+<div class="paragraph">
+<p>You have <a href="Create-A-New-Module">created your own backend implementation</a> or a new fancy feature that should be integrated in NeoEMF?
+You can <a href="https://github.com/atlanmod/NeoEMF/pulls">submit it in a pull request</a>!
+In order to facilitate related discussions and speed-up the merge of your pull request make sure to observe the following rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create <strong>one pull request per feature</strong>: it is way easier for us to integrate relatively small pull requests containing a single feature.
+For example, a pull request can contains code for a new backend or a fix for a bug or a family of related bugs.</p>
+</li>
+<li>
+<p>Provide a <strong>description of the changes</strong> in your pull request: this will help us to understand and check your code efficiently.
+This description may be partially reused in NeoEMF changelog for the next release of the tool.</p>
+</li>
+<li>
+<p>Follow the <strong>package and class naming conventions</strong>: we have a <a href="Naming-Conventions">wiki page</a> referencing the package and class naming conventions we use in the project.
+You can of course replace the package prefix <code>fr.inria.atlanmod</code> with the one of your institution/company.</p>
+</li>
+<li>
+<p>Any question? <strong>Contact us!</strong> If you have any question regarding the contribution process, or if you want additional information for you pull request please contact us at <a href="<a href="mailto:neoemf@googlegroups.com">neoemf@googlegroups.com</a>">neoemf@googlegroups.com</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_discuss_with_us"><a class="anchor" href="#_discuss_with_us"></a>Discuss with us!</h3>
+<div class="paragraph">
+<p>We are always happy to hear about you and how you are using NeoEMF!
+This helps us to spot the weak points of the framework, and decide which feature should be prioritized in the future.
+If you want to report your user experience with the tool or discuss about possible collaborations please contact us <a href="<a href="mailto:neoemf@ogooglegroups.com">neoemf@ogooglegroups.com</a>">by email</a> or using our <a href="https://twitter.com/NeoEMF">twitter account</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_build"><a class="anchor" href="#_build"></a>Build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page details the different steps required to build locally NeoEMF.
+When built and installed in your local maven repository, you can import it in your project using the following maven dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;fr.inria.atlanmod.neoemf&lt;/groupId&gt;
+  &lt;artifactId&gt;neoemf-core&lt;/artifactId&gt;
+  &lt;version&gt;latest&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+  &lt;groupId&gt;fr.inria.atlanmod.neoemf&lt;/groupId&gt;
+  &lt;artifactId&gt;neoemf-io&lt;/artifactId&gt;
+  &lt;version&gt;latest&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, the local build embeds a zipped update site in the <code>plugins/fr.inria.atlanmod.neoemf.eclipse.update/1.0.2-SNAPSHOT</code> folder you can install in your Eclipse application.</p>
+</div>
+<div class="sect2">
+<h3 id="_build_with_maven"><a class="anchor" href="#_build_with_maven"></a>Build with Maven</h3>
+<div class="paragraph">
+<p>You can download the source code of the latest release <a href="https://github.com/atlanmod/NeoEMF/releases/latest">here</a> or clone the <code>master</code> branch using the following git command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone -b master --single-branch  https://github.com/atlanmod/NeoEMF.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Configure Maven&#8217;s JDK to allocate more memory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">export MAVEN_OPTS="-XX:PermSize=256m -XX:MaxPermSize=512m -XstartOnFirstThread"</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_build_core_components"><a class="anchor" href="#_build_core_components"></a>Build Core Components</h4>
+<div class="paragraph">
+<p>NeoEMF core components are bundled as a set of Jar files that can be imported using the maven dependency mechanism.
+You can build NeoEMF core components by going to the root of the source directory and run the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn clean install</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>(optional)</em> You can also run the tests by using :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn test (-pl &lt;neoemf-core|neoemf-data|neoemf-io|...&gt;)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that building the core components does not create Eclipse plugins and an local version of the update site.
+To generate these additional artifacts see the next section.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_build_eclipse_integration_plugins"><a class="anchor" href="#_build_eclipse_integration_plugins"></a>Build Eclipse Integration Plugins</h4>
+<div class="paragraph">
+<p>NeoEMF Eclipse integration plugins provide Eclipse compatible plugins and update site.
+To build these artifacts, you need to run the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn clean install -f plugins/eclipse</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>NeoEMF plugins and update-site are built and stored in your local maven repository at <code>plugins/fr.inria.atlanmod.neoemf.eclipse.update/1.0.2-SNAPSHOT</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_in_eclipse"><a class="anchor" href="#_build_in_eclipse"></a>Build in Eclipse</h3>
+<div class="paragraph">
+<p>You can alternatively build NeoEMF directly in Eclipse using the Eclipse Git and Maven integrations plugin.</p>
+</div>
+<div class="sect3">
+<h4 id="_requirements"><a class="anchor" href="#_requirements"></a>Requirements</h4>
+<div class="paragraph">
+<p>In order to import NeoEMF Git repository in Eclipse, you will need the following plugins in your installation (installable from the software repository of your Eclipse release):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>EGit</strong> : v3.4.2 or later</p>
+</li>
+<li>
+<p><strong>m2e</strong> : v1.5.1 or later</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>And the following m2e connectors (installable through <code>Preferences → Maven → Discovery / m2e Marketplace</code>):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Maven SCM Handler for EGit (m2e-egit)</strong> : v0.14 or later</p>
+</li>
+<li>
+<p><strong>Tycho Project Configurators (Tycho configurator)</strong> : v0.8.0 or later</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that additional m2e connectors can be required denpending of your specific installation.
+They can be installed using Eclipse quick fixes available in the <code>pom</code> files.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_import_and_build"><a class="anchor" href="#_import_and_build"></a>Import and Build</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Import the project using <code>File → Import → Maven → Check out Maven Projects from SCM</code></p>
+</li>
+<li>
+<p>Select "git" in the SCM URL field and paste the repository address (<a href="https://github.com/atlanmod/NeoEMF.git" class="bare">https://github.com/atlanmod/NeoEMF.git</a>)</p>
+</li>
+<li>
+<p>Choose your workspace and working sets setting and finish</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The projects <strong>project</strong>, <strong>parent</strong>, <strong>core</strong>, <strong>graph</strong>, <strong>graph.blueprints</strong> and <strong>map</strong> will be imported and built.</p>
+</div>
+<div class="paragraph">
+<p>If you want to import the projects generating Eclipse specific plugins (features, update-site), you have to import them by
+hand using <code>File → Import → Maven → Existing Maven Projects</code>, and select the projects under the "plugins" folder in your local repository.</p>
+</div>
+<div class="paragraph">
+<p>Note that building NeoEMF in Eclipse can take a long time (and a large disk space) because the default SCM connector fetches all the branches of the remote git repository.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_issues"><a class="anchor" href="#_issues"></a>Issues</h3>
+<div class="paragraph">
+<p>If you experience issues installing or using NeoEMF, you can <a href="https://github.com/atlanmod/NeoEMF/issues">submit an issue on github</a> or contact us at <a href="mailto:neoemf@googlegroups.com">neoemf@googlegroups.com</a></p>
+</div>
+<div class="sect3">
+<h4 id="_known_issues"><a class="anchor" href="#_known_issues"></a>Known issues:</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Only Luna plugins are fetched (the compatibility is not ensured for previous Eclipse versions)</p>
+</li>
+<li>
+<p>The Eclipse plugins can not be built if maven can not access internet (it is needed to fetch Luna p2 repositories)</p>
+</li>
+<li>
+<p>Sometimes the plugin build crashes and/or freezes during p2 index fetching from Luna repositories. It is generally sufficient to cancel the build (<code>ctrl-c</code>) and to relaunch it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

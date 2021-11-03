@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: NeoEMF - Website</title>
+    <meta name="generator" content="Antora 3.0.0-alpha.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sunye.github.io/neoemf-website">NeoEMF - Website</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="NeoEMF" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">NeoEMF Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">NeoEMF</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">index.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">NeoEMF Project</span>
+    <span class="version">2.0.0 2.0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">NeoEMF Project</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.0.0 2.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/atlanmod/NeoEMF/edit/master/neoemf-doc/modules/developer/pages/Reserved-URI-Schemes.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="paragraph">
+<p>NeoEMF relies on EMF&#8217;s URI schemes to understand which backend to instantiate from a given resource URI.
+This page summarizes the current supported schemes and their corresponding backend.</p>
+</div>
+<div class="paragraph">
+<p>According to the NeoEMF <a href="Naming-Conventions">code conventions</a> schemes are defined in dedicated <code>UriBuilder</code> subclasses.
+Note that URI schemes also start with the <code>neo</code> prefix to avoid name clashes.
+Please follow these guidelines if you want to <a href="Create-A-New-Module">create a new module</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong>
+URI schemes are automatically processed by the binding engine that associate a URI scheme with the name of its associated <code>BackendFactory</code>.
+In a common use, you should not create your own URI scheme.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Scheme</th>
+<th class="tableblock halign-left valign-top">Backend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo-im</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default in-memory database</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo-blueprints</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blueprints<sup><a href="#fn1">1</a></sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo-mapdb</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MapDB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo-berkeleydb</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BerkeleyDB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo-hbase</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HBase</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><sup>1</sup>
+TinkerGraph and Neo4j implementations are based on Blueprints and are accessed with the same URI scheme.
+Don&#8217;t forget to use the <code>Config</code> implementation of the module you want to use.</p>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

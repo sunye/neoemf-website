@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: NeoEMF - Website</title>
+    <meta name="generator" content="Antora 3.0.0-alpha.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sunye.github.io/neoemf-website">NeoEMF - Website</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="NeoEMF" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">NeoEMF Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">NeoEMF</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">index.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">NeoEMF Project</span>
+    <span class="version">2.0.0 2.0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">NeoEMF Project</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.0.0 2.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/atlanmod/NeoEMF/edit/master/neoemf-doc/modules/user/pages/Configuration.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="paragraph">
+<p>NeoEMF allows a fine customization of backends and stores through the standard EMF <code>Resource#save()</code> and <code>Resource#load()</code> methods.</p>
+</div>
+<div class="paragraph">
+<p>Since NeoEMF v2.0, the configuration of stores and databases has been merged in a single class: <code>Config</code>.
+This interface and its abstraction provides common options, stores configuration and methods for building implementations.
+Module-specific implementations provide specific options for their associated database, such as database configuration or data mapping strategy.</p>
+</div>
+<div class="sect1">
+<h2 id="_common_configuration"><a class="anchor" href="#_common_configuration"></a>Common Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Stores are used to configure NeoEMF at the application level, in-memory caching, logging, etc.
+They appears between EMF and the backend, in order to intercept calls or add pre/post-processing operations.</p>
+</div>
+<div class="paragraph">
+<p>Common stores are available for all the backends, and includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Auto-saving</strong> :        saves/commits the modification to the database regularly <em>(chunk can be configured)</em></p>
+</li>
+<li>
+<p><strong>Logging</strong> :            logs every calls to the database, with the concerned backend, the name of the method, the parameters and the result(s)</p>
+</li>
+<li>
+<p><strong>Read-only</strong> :          blocks all write operations</p>
+</li>
+<li>
+<p><strong>Stats recording</strong> :    records some statistics about the usage of the database <em>(experimental)</em></p>
+</li>
+<li>
+<p><strong>Container caching</strong> :  caches the container of accessed elements</p>
+</li>
+<li>
+<p><strong>Meta-class caching</strong> : caches the meta-class of accessed elements</p>
+</li>
+<li>
+<p><strong>Size caching</strong> :       caches the size of accessed multi-valued features</p>
+</li>
+<li>
+<p><strong>Feature caching</strong> :    caches the values of accessed features to limit database accesses</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>WARNING:</strong>
+Configurations (common and module-specific) are only taken into account for a loaded or saved resource.
+For example, if you want to use auto-save to create a model with massive insertions <em>(which is strongly recommended)</em>, you will first need to save the empty resource with the associated option.
+If you don&#8217;t, every insertions will be saved in an in-memory database, which can cause a massive memory overhead.</p>
+</div>
+<div class="sect2">
+<h3 id="_example"><a class="anchor" href="#_example"></a>Example</h3>
+<div class="paragraph">
+<p><strong>NOTE:</strong>
+In the following example, every calls to <code>MyUriFactory</code> and <code>MyConfig</code> refer to a module-specific implementation of <code>UriFactory</code> and <code>Config</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// [...]
+
+// Create a new resource
+URI uri = new MyUriFactory().createLocalUri(***);
+Resource resource = resourceSet.createResource(uri);
+
+// Create the map holding the options
+Map&lt;String, Object&gt; options = new MyConfig()
+   .autosave()
+   .cacheContainers()
+   .cacheMetaclasses()
+   .asMap();
+
+// Give the options to the resource
+resource.save(options);
+
+// [Perform the massive insertion here]
+
+// Commit the modifications (if necessary)
+resource.save(options);
+resource.unload();</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_module_specific_configuration"><a class="anchor" href="#_module_specific_configuration"></a>Module-Specific Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As they are strongly related to each backend, there is no generic database options.</p>
+</div>
+<div class="paragraph">
+<p>Each modules provides its own implementation of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>UriFactory</code> to build and link a <code>URI</code> to a <code>BackendFactory</code></p>
+</li>
+<li>
+<p><code>Config</code> to customize the backend behavior</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_blueprints"><a class="anchor" href="#_blueprints"></a>Blueprints</h3>
+<div class="paragraph">
+<p>Because Blueprints is an adapter that can be used for several databases, it exists several implementations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BlueprintsTinkerConfig</code> to configure a TinkerGraph database</p>
+</li>
+<li>
+<p><code>BlueprintsNeo4jConfig</code> to configure an embbeded Neo4j database</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For now, the only additional configuration concern Neo4j, which can add native options with <code>BlueprintsNeo4jConfig#addNativeOption</code>.
+These options are not handled by NeoEMF, but processed directly by the database; see <code>org.neo4j.graphdb.factory.GraphDatabaseSettings</code> for more information.</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong>
+When the Blueprints implementation is a transactional database (for example the Neo4j implementation),
+each modifications are grouped into a transaction, that is committed when the resource is saved.
+This transaction may grow significantly if many operations are performed before a resource <code>Resource#save()</code> call.
+The auto-save option get around this problem by committing regularly the transaction to the database.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mapdb_berkeleydb"><a class="anchor" href="#_mapdb_berkeleydb"></a>MapDB / BerkeleyDB</h3>
+<div class="paragraph">
+<p>Because MapDB and BerkeleyDB are two map-based databases, their structure and configuration are sightly identical.</p>
+</div>
+<div class="paragraph">
+<p>For now, the only additional configuration concern the data mapping strategy, especially for multi-valued features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Indices</strong> : stored separately, identified with their position (<code>feature:1=value1, feature:2=value2,...</code>)</p>
+</li>
+<li>
+<p><strong>Arrays</strong>  : grouped and stored in arrays (<code>feature=[1=value1, 2=value2,...]</code>)</p>
+</li>
+<li>
+<p><strong>Lists</strong>   : similar to a mapping with arrays, but with lists (<code>feature=List[1=value1, 2=value2,...]</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong>
+These mapping inherits from standard data mapping, available in the core component, and reusable for custom implementations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hbase"><a class="anchor" href="#_hbase"></a>HBase</h3>
+<div class="paragraph">
+<p>For now, HBase have no additional configuration, but it&#8217;s recommended to use its specific implementation for future modifications.
+Because of its distributed nature, it requires some pre-requisites.
+They are presented in a <a href="HBase-Configuration">dedicated page</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: NeoEMF - Website</title>
+    <meta name="generator" content="Antora 3.0.0-alpha.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sunye.github.io/neoemf-website">NeoEMF - Website</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="NeoEMF" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">NeoEMF Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">NeoEMF</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">index.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">NeoEMF Project</span>
+    <span class="version">2.0.0 2.0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">NeoEMF Project</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.0.0 2.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/atlanmod/NeoEMF/edit/master/neoemf-doc/modules/user/pages/HBase-Configuration.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="paragraph">
+<p>NeoEMF HBase implementation allows to store and distribute models in a HBase cluster.
+Compared to Blueprints and MapDB implementations that rely on embedded databases that are instantiated by the framework, the HBase implementation requires to access an existing HBase server to store a model.
+We detail here how to setup and start a HBase server locally, and access it through NeoEMF.</p>
+</div>
+<div class="paragraph">
+<p>This page is based on the Apache HBase tutorial available on <a href="https://hbase.apache.org/book.html#quickstart">HBase website</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="_download_hbase"><a class="anchor" href="#_download_hbase"></a>Download HBase</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>HBase is not bundled with NeoEMF and has to be <a href="https://hbase.apache.org/">downloaded separately</a>.
+Note that NeoEMF has been tested for HBase versions between 0.98 and 1.3.1 (latest version available at the moment), if you have another installed version you may experience compatibility issues.
+Extract the downloaded zip file containing HBase binaries.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_start_hbase"><a class="anchor" href="#_start_hbase"></a>Start HBase</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You are required to set <code>JAVA_HOME</code> environment variable before starting HBase.
+You can set the variable via your operating system&#8217;s usual mechanism, but HBase provides a central mechanism, <code>conf/hbase-env.sh</code>.
+Edit this file, uncomment the line starting with <code>JAVA_HOME</code>, and set it to the appropriate location for your operating system.
+The <code>JAVA_HOME</code> variable should be set to a directory which contains the executable file <code>bin/java</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can now start HBase using the following commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cd hbase_directory/bin
+./start-hbase.sh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see a message prompted in the console stating that the master node has been started, and a path referencing HBase logs.</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong>
+The default configuration of HBase uses the <code>tmp</code> folder to store data.
+This folder is typically erase upon operating system&#8217;s reboot.
+You can specify a folder to HBase by editing the file <code>conf/hbase-site.xml</code> with the following properties:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;hbase.rootdir&lt;/name&gt;
+    &lt;value&gt;file:///home/testuser/hbase&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hbase.zookeeper.property.dataDir&lt;/name&gt;
+    &lt;value&gt;/home/testuser/zookeeper&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verify_hbase_is_running"><a class="anchor" href="#_verify_hbase_is_running"></a>Verify HBase is Running</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can monitor HBase by checking <a href="http://localhost:16010" class="bare">http://localhost:16010</a>.
+The database provides a web interface presenting monitoring information, existing tables, etc.</p>
+</div>
+<div class="paragraph">
+<p>In addition, you can run <code>./hbase shell</code> from the <code>bin</code> directory of your installation to start a dedicated shell to interact with the database.
+Information on how to use the HBase console is available on the <a href="https://hbase.apache.org/book.html#quickstart">HBase tutorial</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_a_neoemf_hbase_resource"><a class="anchor" href="#_create_a_neoemf_hbase_resource"></a>Create a NeoEMF HBase Resource</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once HBase a started, you can use it to store and load NeoEMF resources using the following code.
+NeoEMF provides the <code>HBaseUri</code> utility class that allows to create an <code>URI</code> containing HBase <code>host</code>, <code>port</code>, and an embedded <code>URI</code> representing the name of the model.
+Note that <code>2181</code> is the default port used to connect to HBase.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ImmutableConfig config = new HBaseConfig();
+URI uri = new HBaseUriFactory().createRemoteUri("localhost", 2181, "hbaseModel");
+
+ResourceSet resourceSet = new ResourceSetImpl();
+Resource resource = resourceSet.createResource(uri);
+resource.load(config.asMap());
+
+// Manipulate the resource using the standard EMF API
+resource.getContents()
+
+// [...]
+
+resource.save(config.asMap());
+resource.unload();</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

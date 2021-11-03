@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: NeoEMF - Website</title>
+    <meta name="generator" content="Antora 3.0.0-alpha.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sunye.github.io/neoemf-website">NeoEMF - Website</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="NeoEMF" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">NeoEMF Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">NeoEMF</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">index.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">NeoEMF Project</span>
+    <span class="version">2.0.0 2.0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">NeoEMF Project</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.0.0 2.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/atlanmod/NeoEMF/edit/master/neoemf-doc/modules/developer/pages/Create-A-New-Module.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="paragraph">
+<p>In this tutorial we detail how it is possible to extend NeoEMF with a custom backend implementation.</p>
+</div>
+<div class="paragraph">
+<p>We define a simple mapping on a database named "Paprika", and we show how it can be integrated in NeoEMF and used by end users.
+Of course, all occurences of "Paprika" must be replaced by the name of your backend.</p>
+</div>
+<div class="paragraph">
+<p>Several modules already exist, you can imitate them if you wish.</p>
+</div>
+<div class="paragraph">
+<p><strong>Summary</strong></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#1-project-creation">Project Creation</a></p>
+</li>
+<li>
+<p><a href="#2-a-little-touch-of-maven">A Little Touch of Maven</a></p>
+</li>
+<li>
+<p><a href="#3-a-pinch-of-organisationn">A Pinch of Organisation</a></p>
+</li>
+<li>
+<p><a href="#4-implementation">Implementation</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="#41-identification-and-location">Identification and Location</a></p>
+</li>
+<li>
+<p><a href="#42-configuration">Configuration</a></p>
+</li>
+<li>
+<p><a href="#43-data-mapping">Data Mapping</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#overused-beans">Overused Beans</a></p>
+</li>
+<li>
+<p><a href="#everyone-has-its-own-responsibility">Everyone Has Its Own Responsibility</a></p>
+</li>
+<li>
+<p><a href="#common-mapping-strategies">Common Mapping Strategies</a></p>
+</li>
+<li>
+<p><a href="#your-mapping-strategy">Your Mapping Strategy</a></p>
+</li>
+<li>
+<p><a href="#some-help">Some Help</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="#44-one-factory-to-create-them-all">One Factory to Create Them All</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a href="#5-services">Services</a></p>
+</li>
+<li>
+<p><a href="#6-hello-world">Hello World!</a></p>
+</li>
+<li>
+<p><a href="#7-integration">Integration</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="#in-tests">In Tests</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#test-context">Test Context</a></p>
+</li>
+<li>
+<p><a href="#unit-tests">Unit Tests</a></p>
+</li>
+<li>
+<p><a href="#integration-tests">Integration Tests</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="#in-eclipse-plugin">In Eclipse Plugin</a></p>
+</li>
+<li>
+<p><a href="#in-benchmarks">In Benchmarks</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a href="#8-pull-request">Pull request!</a></p>
+</li>
+</ol>
+</div>
+</blockquote>
+</div>
+<div class="sect1">
+<h2 id="_1_project_creation"><a class="anchor" href="#_1_project_creation"></a>1. Project Creation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first step before starting to implement your own backend connector is to clone the NeoEMF repository:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone -b master --single-branch https://github.com/atlanmod/NeoEMF.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>WARNING:</strong>
+We recommand to use the command above instead of the classical <code>git clone</code>, because developement and <code>gh-pages</code> branches are heavy and not required.</p>
+</div>
+<div class="paragraph">
+<p>Once your local repository has been clones you can create a local branch that will be used later to submit a pull request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git checkout -b paprika</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you have everything setup to start implementing your own backend connector!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2_a_little_touch_of_maven"><a class="anchor" href="#_2_a_little_touch_of_maven"></a>2. A Little Touch of Maven</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NeoEMF is designed around a modular architecture based on three main components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>core</strong> framework containing the main features of the framework.
+Users typically access NeoEMF through the core API.</p>
+</li>
+<li>
+<p>The <strong>io</strong> component used to interoperate between different modules, and the external world.</p>
+</li>
+<li>
+<p>The <strong>data</strong> components containing backend-related implementations, such as dedicated configuration, data mapping strategy, URI builer, etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This architecture allows to have a clear separation between shared code and backend-specific code.
+Supported backends are developped as independent Maven projects that extends <code>neoemf-data</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_2_1_create_the_module_with_maven_artifact"><a class="anchor" href="#_2_1_create_the_module_with_maven_artifact"></a>2.1 Create the module with Maven artifact</h3>
+<div class="paragraph">
+<p>We recently created a Maven archetype that allow you to create a new module without all the following steps. The structure will be created automatically.</p>
+</div>
+<div class="paragraph">
+<p><strong>WARNING:</strong> The archetype is not deployed yet under Maven Central, but you can use it after a <code>mvn install -f archetype</code>.</p>
+</div>
+<div class="paragraph">
+<p>Go to the <code>neoemf-data</code> directory, and use the following command in a shell:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn archetype:generate -DarchetypeArtifactId="neoemf-archetype-extension" \
+  -DarchetypeGroupId="fr.inria.atlanmod.neoemf.archetypes" \
+  -DarchetypeVersion="2.0.0-SNAPSHOT" \
+  -DgroupId="fr.inria.atlanmod.neoemf" \
+  -DartifactId="neoemf-data-paprika" \
+  -Dversion="2.0.0-SNAPSHOT" \
+  -Dpackage="fr.inria.atlanmod.neoemf.data.paprika" \
+  -DdatabaseName="Paprika"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where <code>databaseName</code> corresponds to the prefix of all generated classes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_2_create_the_module_manually"><a class="anchor" href="#_2_2_create_the_module_manually"></a>2.2 Create the module manually</h3>
+<div class="paragraph">
+<p>To start our new implementation, we create a new folder <code>paprika</code> that will contain all the code related to our Paprika-based model mapping.
+Then create a new Maven project using the following command, or your IDE Maven environment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn archetype:generate -DgroupId=fr.inria.atlanmod.neoemf -DartifactId=neoemf-data-paprika -DinteractiveMode=false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then update the created <code>pom.xml</code> file with the following information:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">[...]
+&lt;parent&gt;
+  &lt;groupId&gt;fr.inria.atlanmod.neoemf&lt;/groupId&gt;
+  &lt;artifactId&gt;neoemf-data&lt;/artifactId&gt;
+  &lt;version&gt;1.0.2-SNAPSHOT&lt;/version&gt;
+&lt;/parent&gt;
+
+&lt;artifactId&gt;neoemf-data-paprika&lt;/artifactId&gt;
+
+&lt;packaging&gt;bundle&lt;/packaging&gt;
+
+&lt;name&gt;NeoEMF Data Paprika&lt;/name&gt;
+&lt;description&gt;An in-memory backend using Paprika to represent models&lt;/description&gt;
+
+&lt;properties&gt;
+  &lt;!-- Ideal to put dependencies versions --&gt;
+&lt;/properties&gt;
+
+&lt;dependencies&gt;
+  &lt;!-- Think to use a dependencyManagement section --&gt;
+&lt;/dependencies&gt;
+
+&lt;build&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+      &lt;groupId&gt;org.apache.felix&lt;/groupId&gt;
+      &lt;artifactId&gt;maven-bundle-plugin&lt;/artifactId&gt;
+      &lt;configuration&gt;
+        &lt;instructions&gt;
+          &lt;Bundle-SymbolicName&gt;${project.groupId}.data.paprika&lt;/Bundle-SymbolicName&gt;
+          &lt;Export-Package&gt;
+            !fr.inria.atlanmod.neoemf.data.paprika.*.internal.*,
+            fr.inria.atlanmod.neoemf.data.paprika.*
+          &lt;/Export-Package&gt;
+          &lt;Require-Bundle&gt;
+            ${project.groupId}.core
+          &lt;/Require-Bundle&gt;
+        &lt;/instructions&gt;
+      &lt;/configuration&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;
+[...]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This <code>pom.xml</code> specifies that the <code>neoemf-data-paprika</code> project is a sub-project of <code>neoemf-data</code>, inheriting all its dependencies, which include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The core component of NeoEMF</p>
+</li>
+<li>
+<p>The common component for Atlanmod projects</p>
+</li>
+<li>
+<p>The JSR-305 implementation, for common annotations</p>
+</li>
+<li>
+<p>The common component of EMF (for <code>URI</code> uses)</p>
+</li>
+<li>
+<p>JUnit5 and AssertJ for testing</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All the backend implementations have a similar root <code>pom.xml</code> file.</p>
+</div>
+<div class="paragraph">
+<p>The <code>build</code> section of the <code>pom.xml</code> file tells Maven to generate an Eclipse bundle, and sets the generated <code>MANIFEST.MF</code> information such as the bundle name, the exported packages, and the other bundles that are required to use the generated one.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_3_a_pinch_of_organisation"><a class="anchor" href="#_3_a_pinch_of_organisation"></a>3. A Pinch of Organisation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every modules respects a simple structure to organize the different classes.</p>
+</div>
+<div class="paragraph">
+<p>In a package named <code>fr.inria.atlanmod.neoemf.data.paprika</code> (or use the base package of your organization), you should have the following file structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">.
++-- config
+|   |-- PaprikaConfig.java
++-- util
+|   |-- PaprikaUriFactory.java
++-- PaprikaBackend.java
++-- PaprikaBackendFactory.java
++-- DefaultPaprikaBackend.java</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you need more packages, feel free to add them.</p>
+</div>
+<div class="paragraph">
+<p>And don&#8217;t forget to respect the <a href="Developers-Guide">developers rules</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_4_implementation"><a class="anchor" href="#_4_implementation"></a>4. Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All of the following steps can be performed in any order: all classes are related to each other.
+If a class is missing in your project, but present in the example, don&#8217;t panic, it should appears in next steps.</p>
+</div>
+<div class="sect2">
+<h3 id="_4_1_identification_and_location"><a class="anchor" href="#_4_1_identification_and_location"></a>4.1. Identification and Location</h3>
+<div class="paragraph">
+<p>Every databases used in NeoEMF are associated to a dedicated URI scheme.
+This allows the framework to understand from a given resource URI which connector should be used to access the model.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> If the provided URI is <code>neo-paprika:/path/to/my/resource/resource.paprika</code>, the framework parses the scheme <code>neo-paprika</code> and associate the provided folder <code>resource.paprika</code> to the <code>PaprikaBackendFactory</code>.</p>
+</div>
+<div class="paragraph">
+<p>The URI scheme is automatically created according to the name of the <code>BackendFactory</code> identified by the <code>@FactoryBinding</code> annotation.
+By default, URI schemes are prefixed by <code>neo-</code> to avoid clashes, followed by the <code>BackendFactory#name()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>@FactoryBinding</code> annotation is mandatory: it is used to bind a <code>UriFactory</code> to a <code>BackendFactory</code>.
+This is used by the binding engine to retrieve a <code>BackendFactory</code> from a URI scheme, and vice-versa.</p>
+</div>
+<div class="paragraph">
+<p>The code below shows the class <code>PaprikaUri</code> that extends the core class <code>AbstractUriFactory</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>AbstractUriFactory</code> class defines all methods related to <code>URI</code> creation, you don&#8217;t need to re-implement these methods.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Component(service = UriFactory.class)
+@FactoryBinding(factory = PaprikaBackendFactory.class)
+@ParametersAreNonnullByDefault
+public class PaprikaUriFactory extends AbstractUriFactory {
+
+  /**
+   * Constructs a new {@code PaprikaUriFactory}.
+  public PaprikaUriFactory () {
+    super(true, false);
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_2_configuration"><a class="anchor" href="#_4_2_configuration"></a>4.2. Configuration</h3>
+<div class="paragraph">
+<p>The configuration allows to define the database behavior, the data mapping strategy, etc.
+Everything that can be customized by the user must be declared there.
+Because this configuration can be saved in a file, to keep the state of the backend accross executions, it can also contains internal parameters.</p>
+</div>
+<div class="paragraph">
+<p>All required options must be initialized in the constructor.</p>
+</div>
+<div class="paragraph">
+<p>A <code>Config</code> subclass should respects the builder pattern, and each methods have to return the current configuration.
+The protected <code>me()</code> method can be used: it returns the current configuration in the right type, and avoid a class-cast for abstractions/sub-implementations.</p>
+</div>
+<div class="paragraph">
+<p>As for <code>UriFactory</code>, a <code>Config</code> implementation should be annotated with <code>@FactoryBinding</code>.
+It allows to retrieve it from the name of a <code>BackendFactory</code> by using reflection.</p>
+</div>
+<div class="paragraph">
+<p>Note that the data mapping strategy is defined by giving the name of the class (see <code>PaprikaConfig#withDefault()</code>), this allow to save the mapping in a configuration file and retrieve it in a future executions. We will see later how to process it.
+All methods related to mapping strategies must be prefixed by <code>with</code>.
+If your module will only contain a single mapping, this method can be protected and initialized in the constructor.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can use the <code>createKey()</code> method to create and assemble a composed key.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Component(service = Config.class, scope = ServiceScope.PROTOTYPE)
+@FactoryBinding(factory = PaprikaBackendFactory.class)
+@ParametersAreNonnullByDefault
+public class PaprikaConfig extends BaseConfig&lt;PaprikaConfig&gt; {
+
+  /**
+   * Constructs a new {@code PaprikaConfig}.
+   */
+  public PaprikaConfig() {
+    // Initialize the default values of this configuration
+    withDefault();
+  }
+
+  /**
+    * Defines the default mapping to use for the created {@link PaprikaBackend}.
+    *
+    * @return this configuration (for chaining)
+    */
+  @Nonnull
+  protected PaprikaConfig withDefault() {
+    // Because the mapping is a read-only option, always use `#setMappingWithCheck(***, false)` to avoid conflicts
+    return setMappingWithCheck("fr.inria.atlanmod.neoemf.data.paprika.DefaultPaprikaBackend", false);
+  }
+
+  // Add other mappings (withLists, withMaps,...)
+  // [...]
+
+  @Nonnull
+  @Override
+  protected Predicate&lt;String&gt; isPersistentKey() {
+    // Add some keys that have to be saved in a configuration file
+    return super.isPersistentKey().or(s -&gt; /* Check the configuration key */);
+  }
+
+  @Nonnull
+  @Override
+  protected Predicate&lt;String&gt; isReadOnlyKey() {
+    // Add some keys that cannot be changed after their first definition
+    return super.isReadOnlyKey().or(s -&gt; /* Check the configuration key */);
+  }
+
+  // Add custom options (addNativeOption,...)
+  // Several methods are available in `BaseConfig` to easily add options
+  // [...]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_3_data_mapping"><a class="anchor" href="#_4_3_data_mapping"></a>4.3. Data Mapping</h3>
+<div class="paragraph">
+<p>Then comes the more interesting part: the data mapping!</p>
+</div>
+<div class="paragraph">
+<p>NeoEMF internally translates EMF methods into NeoEMF operations, represented as atomic queries, with a differentiation between attributes and references between elements, that use key/value representations instead of complexe objects.
+This allow to define a common behavior for all modules, and ease the integration with databases.</p>
+</div>
+<div class="sect3">
+<h4 id="_overused_beans"><a class="anchor" href="#_overused_beans"></a>Overused Beans</h4>
+<div class="paragraph">
+<p>When you will create your mapping strategy, you will met several beans:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Class</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-center valign-top">Key</th>
+<th class="tableblock halign-center valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Represents the identifier of an element, with a 64-bit representation <em>(<code>long</code> or hexadecimal string)</em>.<br>
+Used as key for operations on containers and meta-classes, and as value for all operations related to references between elements.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SingleFeatureBean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Represents a single-valued feature <em>(attribute or reference)</em> of an element.<br>
+It&#8217;s a composed bean, with an <code>Id</code>, and the identifier of the feature as an <code>int</code>.<br>
+Used as key for operations on single-valued features, and as value for operations related to containers.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ManyFeatureBean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Represents a multi-valued feature of an element.<br>
+It&#8217;s a composed bean similar to <code>SingleFeatureBean</code>, with the position of the feature.<br>
+Always used as key for operations on multi-valued features.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ClassBean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Represents a meta-class of an element. It contains some methods to retrieve information about the real instance.<br>
+It&#8217;s a composed bean, with the name of the meta-class, and its associated URI.<br>
+Always used as value for operations on meta-classes.</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To manipulate these beans, several classes are provided in the core component:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>**.data.bean.serializer.BeanSerializerFactory</code>: A factory that creates optimized <code>Serializer</code>s for each beans, if you need to use a binary representation of beans</p>
+</li>
+<li>
+<p><code>**.core.IdConverters</code>: A static class that creates <code>Converter</code>s to transform an <code>Id</code> into its raw representation (<code>Id</code> to <code>long</code> for example, and vice-versa)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_everyone_has_its_own_responsibility"><a class="anchor" href="#_everyone_has_its_own_responsibility"></a>Everyone Has Its Own Responsibility</h4>
+<div class="paragraph">
+<p>The data mapping strategies are used to translate NeoEMF operations into database operations.
+They contain a set of queries to access, store and manipulate a model.
+These operations take the form of atomic methods, such as <code>valuef</code>, <code>valueFor</code>, <code>allReferencesOf</code>, etc.</p>
+</div>
+<div class="paragraph">
+<p>All these methods are referenced in several interfaces, where each one has its own responsibilities:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Class</th>
+<th class="tableblock halign-left valign-top">Responsability</th>
+<th class="tableblock halign-left valign-top">Multiplicity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ContainerMapper</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">container of elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">one-to-one</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ClassMapper</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meta-class of elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">many-to-one</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ValueMapper</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">single-valued attributes of elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">one-to-one</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ReferenceMapper</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">single-valued references between elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">one-to-one</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ManyValueMapper</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">multi-valued attributes of elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">one-to-many</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ManyReferenceMapper</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">multi-valued references between elements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">one-to-many</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To ease the integration, they are regrouped into a single interface: <code>DataMapper</code>, implemented by the <code>Backend</code> interface that you will use.</p>
+</div>
+<div class="paragraph">
+<p>NeoEMF allows to use several data mapping strategy for a same component.
+The different mapping strategies don&#8217;t have to be compatible with each other:
+The mapping strategy is saved in the configuration file next to the database (only for file-based backends), so, the mapping compatibility is ensured accross several executions: the user will not be able to use a mapping different from the one previously defined.</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong> The values used with <code>ValueMapper</code> and <code>ManyValueMapper</code> are only primitives (<code>int</code>, <code>String</code>, <code>boolean</code>,&#8230;&#8203;). Complex objects are converted before any call to these classes.
+The only exception concerns arrays and lists if you want to use a predefined mapping strategy (see next section). Make sure your database supports them before using them.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_common_mapping_strategies"><a class="anchor" href="#_common_mapping_strategies"></a>Common Mapping Strategies</h4>
+<div class="paragraph">
+<p>Some common data mapping strategies can be used to simplify your development, but they are <strong>optional</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The first set corresponds to references redirection, where they are processed as values after a conversion to/from the desired type (<code>Id</code> ↔ <code>&lt;T&gt;</code>) with a <code>Converter</code>.
+This is useful if you don&#8217;t plan to use a different mapping for attributes and references.
+The <code>IdConverters</code> class in the core component might be useful in this case.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Class</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Redirection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ReferenceAs&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Redirects all calls related to single-valued references</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ReferenceMapper</code> → <code>ValueMapper</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ManyReferenceAs&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Similar to <code>ReferenceAs&lt;T&gt;</code>, but with multi-valued references</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ManyReferenceMapper</code> → <code>ManyValueMapper</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AllReferenceAs&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A combination of <code>ReferenceAs&lt;T&gt;</code> and <code>ManyReferenceAs&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ManyReferenceMergedAs&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Merges a set of multi-valued references into a single entity of type <code>&lt;T&gt;</code>, then processes the result as a single-valued attribute.<br>
+For example, you can use a string representation of a <code>List&lt;Id&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ManyReferenceMapper</code> → <code>ValueMapper</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The second set corresponds to multi-valued attributes redirection.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Class</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ManyValueWithIndices</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each multi-valued attribute is processed separately.<br>
+It&#8217;s a shortcut method that use <code>valueOf()</code> and a variant of <code>valueFor()</code> directly to manipulate the database, and avoid implementating <code>addValue()</code>, <code>removeValue()</code>, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ManyValueWithArrays</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Groups a set of multi-valued attributes into an array, then processes the result as a single-valued attribute.<br>
+The position of a multi-valued feature is defined by its position in the array.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ManyValueWithLists</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Similar to <code>ManyValueWithArrays</code>, but using <code>List</code> instead of arrays.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Their behavior is not definitive, and can be re-implemented to fit your ideal.
+They are provided as interfaces, and can be combined with others, if they don&#8217;t conflict (using both <code>ManyValueWithLists</code> and <code>ManyValueWithArrays</code> together will never be a good idea).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_your_mapping_strategy"><a class="anchor" href="#_your_mapping_strategy"></a>Your Mapping Strategy</h4>
+<div class="paragraph">
+<p>First, creates the base interface of your module.</p>
+</div>
+<div class="paragraph">
+<p>For now, it only contains some methods to define the nature of your backend, but it could contains more methods in future.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ParametersAreNonnullByDefault
+public interface PaprikaBackend extends Backend {
+
+  @Override
+  default boolean isPersistent() {
+    // Is your backend persistent ?
+  }
+
+  @Override
+  default boolean isDistributed() {
+    // Is your backend distributed ?
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, creates the base class of your module.</p>
+</div>
+<div class="paragraph">
+<p>Its goal is to provide a base for all data mapping strategies related to your module, so it should contains methods for database initialization and native operations.
+It can also contains methods common for all your mapping, such as <code>save()</code>, <code>close()</code>, <code>copyTo()</code>, or the mapping of containers and meta-classes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ParametersAreNonnullByDefault
+abstract class AbstractPaprikaBackend extends AbstractBackend implements PaprikaBackend, AllReferenceAs&lt;Long&gt; {
+
+  /**
+   * Constructs a new {@code AbstractPaprikaBackend}.
+   */
+  protected AbstractPaprikaBackend() {
+    // Initialize the database
+  }
+
+  @Override
+  protected void internalSave() throws IOException {
+    // Save the last modifications
+  }
+
+  @Override
+  protected void internalClose() throws IOException {
+    // Cleanly close the database and release all associated resources
+  }
+
+  @Override
+  protected void internalCopyTo(DataMapper target) {
+    // This method is called only when `this.getClass() == target.getClass()`
+    AbstractPaprikaBackend to = AbstractPaprikaBackend.class.cast(target);
+
+    // Copy the database of this backend to the database of the target
+  }
+
+  @Nonnull
+  @Override
+  public Converter&lt;Id, Long&gt; referenceConverter() {
+    return IdConverters.withLong();
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, creates the data mapping by implementing all inherited methods.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ParametersAreNonnullByDefault
+class DefaultPaprikaBackend extends AbstractPaprikaBackend implements ManyValueWithIndices {
+
+  /**
+   * Constructs a new {@code DefaultPaprikaBackend}.
+   */
+  protected DefaultPaprikaBackend() {
+    super();
+
+    // Initialize more...
+  }
+
+  // Implements all methods
+  // [...]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_some_help"><a class="anchor" href="#_some_help"></a>Some Help</h4>
+<div class="paragraph">
+<p>To ease your development, you can find utility classes and methods in the <code>org.atlanmod.commons</code> module:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Some preconditions, based on <a href="https://github.com/google/guava">Guava</a></p>
+</li>
+<li>
+<p>An asynchronous logger</p>
+</li>
+<li>
+<p>An efficient in-memory cache, on top of a <a href="https://github.com/ben-manes/caffeine">Caffeine</a> cache</p>
+</li>
+<li>
+<p>Some lazy objects that loads on-demand their value</p>
+</li>
+<li>
+<p>Efficient hashers, on top of <a href="https://github.com/OpenHFT/Zero-Allocation-Hashing">Zero Allocation Hashing</a>; including Murmur3, xxHash, cityHash or farmHash algorithms</p>
+</li>
+<li>
+<p>Several methods related to concurrency, collections, arrays, stream, primitives, etc.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_4_one_factory_to_create_them_all"><a class="anchor" href="#_4_4_one_factory_to_create_them_all"></a>4.4. One Factory to Create Them All</h3>
+<div class="paragraph">
+<p>All backends of a same module are created in a single place: the <code>BackendFactory</code>. It&#8217;s the core of a module.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s a simple class that process the URI built with the <code>PaprikaUri</code> and the <code>PaprikaConfig</code>&#8201;&#8212;&#8201;given in parameters when using <code>Resource#load()</code> or <code>Resource#save()</code>&#8201;&#8212;&#8201;in order to create a <code>PaprikaBackend</code>.
+The URI is used to locate the database, while the configuration is used to define the expected behavior of the backend.</p>
+</div>
+<div class="paragraph">
+<p>As a reminder, the URI scheme is built from the factory&#8217;s name, so, the name of a <code>BackendFactory</code> must be unique.
+See the <a href="Reserved-URI-Schemes">reserved schemes</a> to check that the name of your factory is not already used.</p>
+</div>
+<div class="paragraph">
+<p>The code below shows a common usage of a <code>BackendFactory</code>, with URI/configuration analysis.</p>
+</div>
+<div class="paragraph">
+<p>To create the <code>Backend</code> instances, we use reflection: the mapping is defined and stored in the configuration as the fully-qualified name of the <code>Backend</code> class.
+To instantiated it, you have to use the <code>createMapper()</code> method: The argument correspond to the mapping defined in the <code>PaprikaConfig</code>, and the constructor parameters.
+These depend on your implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Component(service = BackendFactory.class)
+@ParametersAreNonnullByDefault
+public final class PaprikaBackendFactory extends AbstractBackendFactory&lt;PaprikaConfig&gt; {
+
+  /**
+   * Constructs a new {@code PaprikaBackendFactory}.
+   */
+  public PaprikaBackendFactory() {
+    super("paprika");
+  }
+
+  @Nonnull
+  @Override
+  protected Backend createLocalBackend(Path directory, PaprikaConfig config) {
+    // `directory` and `config` are processed from the parameters used with `Resource#save()` or `#load()`
+    // The `directory` is used to locate the database.
+    // The `baseConfig` contains all defined options
+
+    // Retrieve the mapping defined in the configuration
+    String mapping = config.getMapping();
+
+    // Is the read-only mode has been configured ?
+    boolean isReadOnly = config.isReadOnly();
+
+    // Initialize the database
+    // [...]
+
+    // Create the mapping on top of the created database with its arguments
+    return createMapper(mapping, arg1, arg2,...);
+  }
+
+  @Nonnull
+  @Override
+  protected Backend createRemoteBackend(URL url, PaprikaConfig config) {
+      // You can also create a remote back-end from an URL
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_5_services"><a class="anchor" href="#_5_services"></a>5. Services</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since <code>v2.0.0</code>, NeoEMF uses the <code>ServiceLoader</code> to retrieve all services across modules. This implies to declare them in the <code>resources/META-INF/services</code> directory. You should have at least three files, declaring the implementation that you have created for each service:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">resources/META-INF/services
++-- fr.inria.atlanmod.neoemf.config.Config
++-- fr.inria.atlanmod.neoemf.data.BackendFactory
++-- fr.inria.atlanmod.neoemf.util.UriFactory</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Under OSGi, and especially with the Equinox implementation, <code>ServiceLoader</code> is not correctly handled. So, we chose to use the Declarative Services. These declarations are automatically registered and configured when building the project, according to the <code>@Component</code> annotations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_6_hello_world"><a class="anchor" href="#_6_hello_world"></a>6. Hello World!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now, you can test your new backend by creating a NeoEMF resource using the classes we defined before.</p>
+</div>
+<div class="paragraph">
+<p>We create a new default <code>PaprikaConfig</code>, without any additional parameter, then locate the resource by using the <code>PaprikaUriFactory</code> to identify our <code>PaprikaBackendFactory</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can then test your implementation by adding elements, save, load, traverse a resource, or whatever you want.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">ImmutableConfig config = new PaprikaConfig();
+URI uri = new PaprikaUriFactory().createLocalUri(***);
+
+ResourceSet resourceSet = new ResourceSetImpl();
+Resource resource = resourceSet.createResource(uri);
+
+// Only for an existing resource
+//resource.load(config.asMap());
+//resource.getContents()
+
+// Do something on the resource
+// [...]
+
+resource.save(config.asMap());
+resource.unload();</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_7_integration"><a class="anchor" href="#_7_integration"></a>7. Integration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_in_tests"><a class="anchor" href="#_in_tests"></a>In Tests</h3>
+<div class="paragraph">
+<p>NeoEMF comes with a set of unit tests and integration tests used to ensure the correct behavior of a backend with or without EMF.</p>
+</div>
+<div class="sect3">
+<h4 id="_test_context"><a class="anchor" href="#_test_context"></a>Test Context</h4>
+<div class="paragraph">
+<p>All tests are based in a <code>Context</code>, which is a simple class that defines the behavior of your module.</p>
+</div>
+<div class="paragraph">
+<p>It includes several methods to initialize (useful when using a distributed database), identify or create objects related to a module.</p>
+</div>
+<div class="paragraph">
+<p>A <code>Context</code> can be used for several data mapping strategy, defined by the <code>Context#config()</code> method.
+For example, the method <code>new PaprikaConfig()</code> returns the default configuration to create a <code>DefaultPaprikaBackend</code>. You should have as many similar methods as there are backends in your module.</p>
+</div>
+<div class="paragraph">
+<p>In tests, create a <code>fr.inria.atlanmod.neoemf.data.paprika.context</code> package, then add the following class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ParametersAreNonnullByDefault
+public abstract class PaprikaContext extends AbstractLocalContext {
+
+  /**
+   * Creates a new {@code PaprikaContext} with a mapping with indices.
+   *
+   * @return a new context.
+   */
+  @Nonnull
+  public static Context getDefault() {
+    return new PaprikaContext() {
+      @Nonnull
+      @Override
+      public Config config() {
+        return new PaprikaConfig();
+      }
+    };
+  }
+
+  // Add all other mappings as before
+  // [...]
+
+  @Nonnull
+  @Override
+  public String name() {
+    // The display name of your module
+    // Re-implement it in `PaprikaContext` subclasses if you use several mappings
+    return "Paprika";
+  }
+
+  @Nonnull
+  @Override
+  public BackendFactory factory() {
+    return new PaprikaBackendFactory();
+  }
+
+  // Re-implement default methods if necessary
+  // [...]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_unit_tests"><a class="anchor" href="#_unit_tests"></a>Unit Tests</h4>
+<div class="paragraph">
+<p>Then create the following unit tests, by extending the existing ones.</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong>
+If you have to create some tests that don&#8217;t inherit from an existing one, use <code>AbstractTest</code> as base class.
+You can also inherit from <code>AbstractUnitTest</code> if you need a <code>Context</code>, or <code>AbstractFileBasedTest</code> if you need a temporary file.</p>
+</div>
+<div class="paragraph">
+<p>Most test-cases don&#8217;t require any additional test, but don&#8217;t hesitate to add some if you wish.
+If you want to disable an inherited test, simply override it and annotate it with <code>@Disabled</code> with thre reason.</p>
+</div>
+<div class="paragraph">
+<p>The following test-case ensure the creation of a URI with your <code>UriFactory</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ParametersAreNonnullByDefault
+class PaprikaUriFactoryTest extends AbstractUriFactoryTest {
+
+  @Nonnull
+  @Override
+  protected Context context() {
+    return PaprikaContext.getDefault();
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following test-case ensure that the correct backend is created from a given <code>Config</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ParametersAreNonnullByDefault
+class PaprikaBackendFactoryTest extends AbstractBackendFactoryTest {
+
+  @Nonnull
+  @Override
+  protected Context context() {
+    return PaprikaContext.getDefault();
+  }
+
+  @Nonnull
+  @Override
+  protected Stream&lt;Arguments&gt; allMappings() {
+    return Stream.of(
+      Arguments.of(new PaprikaConfig(), DefaultPaprikaBackend.class)
+      // Add all other backends of your module with their corresponding configuration
+      // [...]
+    );
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, the most important test: the data management test!
+The following test-case ensure the data integrity when using your module by checking every methods at a low-level.</p>
+</div>
+<div class="paragraph">
+<p><strong>IMPORTANT:</strong>
+You have to create as many classes as there are backends in your module.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ParametersAreNonnullByDefault
+class DefaultPaprikaBackendTest extends AbstractDataMapperTest {
+
+  @Nonnull
+  @Override
+  protected Context context() {
+    return PaprikaContext.getDefault();
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_integration_tests"><a class="anchor" href="#_integration_tests"></a>Integration Tests</h4>
+<div class="paragraph">
+<p>Finally, the ultimate step. You need to include your module in integration tests, based on EMF resources.</p>
+</div>
+<div class="paragraph">
+<p>Defines the dependencies in the <code>neoemf-tests</code> module, by including your module, and its associated <code>test-jar</code> variant.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
+  &lt;!-- [...] --&gt;
+
+  &lt;dependency&gt;
+    &lt;groupId&gt;fr.inria.atlanmod.neoemf&lt;/groupId&gt;
+    &lt;artifactId&gt;neoemf-data-paprika&lt;/artifactId&gt;
+    &lt;version&gt;${project.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+
+  &lt;dependency&gt;
+    &lt;groupId&gt;fr.inria.atlanmod.neoemf&lt;/groupId&gt;
+    &lt;artifactId&gt;neoemf-data-paprika&lt;/artifactId&gt;
+    &lt;version&gt;${project.version}&lt;/version&gt;
+    &lt;type&gt;test-jar&lt;/type&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+  &lt;/dependency&gt;
+
+  &lt;!-- [...] --&gt;
+&lt;/dependencies&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, simply add all <code>PaprikaContext</code> implementations in the <code>fr.inria.atlanmod.neoemf.tests.provider.ContextProvider#allContexts()</code> method.</p>
+</div>
+<div class="paragraph">
+<p>That&#8217;s all, your module is ready. Congratulations!</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_in_eclipse_plugin"><a class="anchor" href="#_in_eclipse_plugin"></a>In Eclipse Plugin</h3>
+<div class="paragraph">
+<p>For now, skip this part.
+You can use the following tips if you&#8217;re brave, and imitate the existing modules.</p>
+</div>
+<div class="paragraph">
+<p><em>*-- TODO*</em></p>
+</div>
+<div class="paragraph">
+<p>All following paths are based on the <code>plugins/eclipse</code> directory:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add the Eclipse feature:
+Create a new directory <code>features/fr.inria.atlanmod.neoemf.data.paprika.feature</code> that contains:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>build.properties</code>: Only contains <code>bin.includes=feature.xml</code></p>
+</li>
+<li>
+<p><code>feature.xml</code>     : The configuration of the Eclipse feature</p>
+</li>
+<li>
+<p><code>pom.xml</code>         : The configuration of the Maven module, built as an <code>eclipse-feature</code>, with its dependencies</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Update <code>features/pom.xml</code> with the previously created Eclipse feature (under <code>modules</code>)</p>
+</li>
+<li>
+<p>Update the update-site generation in <code>update</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pom.xml</code>     : Add the dependency of the previously created Eclipse feature</p>
+</li>
+<li>
+<p><code>category.xml</code>: Add a <code>feature</code> in the <code>backend</code> category</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Update examples</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_in_benchmarks"><a class="anchor" href="#_in_benchmarks"></a>In Benchmarks</h3>
+<div class="paragraph">
+<p>For now, skip this part.
+You can use the following tips if you&#8217;re brave, and imitate the existing modules.</p>
+</div>
+<div class="paragraph">
+<p><em>*-- TODO*</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new class <code>PaprikaAdapter</code> extending <code>fr.inria.atlanmod.neoemf.benchmarks.adapter.AbstractPersistentAdapter</code>.
+(Create an inner subclass for each backend, if necessary)</p>
+</li>
+<li>
+<p>Annotate each adapters with <code>@AdapterName</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_8_pull_request"><a class="anchor" href="#_8_pull_request"></a>8. Pull Request!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once your new implementation is ready and tested you can submit it in a pull request to push it in the next release of the tool!
+Integrating new backends to NeoEMF is designed to be easy, and the pushed code will benefit of the future release improvements.</p>
+</div>
+<div class="paragraph">
+<p>If you have any question, or maybe a suggestion, don&#8217;t hesitate to contact us at <a href="mailto:neoemf@googlegroups.com">neoemf@googlegroups.com</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

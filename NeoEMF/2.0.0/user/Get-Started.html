@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: NeoEMF - Website</title>
+    <meta name="generator" content="Antora 3.0.0-alpha.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sunye.github.io/neoemf-website">NeoEMF - Website</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="NeoEMF" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">NeoEMF Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">NeoEMF</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">index.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">NeoEMF Project</span>
+    <span class="version">2.0.0 2.0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">NeoEMF Project</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.0.0 2.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/atlanmod/NeoEMF/edit/master/neoemf-doc/modules/user/pages/Get-Started.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="paragraph">
+<p>The goal of this tutorial is to present NeoEMF through a simple example.
+You can download a zipped version of the project <a href="http://neoemf.com/static/neoemf_tutorial.zip">here</a>, or import it in your Eclipse workspace using the <code>File → New → Example → NeoEMF → NeoEMF Tutorial Project</code> menu.</p>
+</div>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this tutorial you will create a persistent EMF resource using the Neo4j database as a backend.
+To do so, you will define a simple Ecore model, create instances of this model and then store these instances in the persistent EMF resource.</p>
+</div>
+<div class="sect2">
+<h3 id="_audience"><a class="anchor" href="#_audience"></a>Audience</h3>
+<div class="paragraph">
+<p>This tutorial is designed for the Eclipse Modeling Framework (<a href="https://eclipse.org/modeling/emf/">EMF</a>) users with a need to handle large-scale models in Java programs.</p>
+</div>
+<div class="paragraph">
+<p>This tutorial will bring at intermediate level of expertise, where you will be able to use the <a href="https://neo4j.com">Neo4j</a> graph database to store EMF models.
+From this level, you can take yourself at higher level of expertise, understanding how to use NeoEMF with different databases.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h3>
+<div class="paragraph">
+<p>Before proceeding with this tutorial you should have a good understanding of EMF.
+If you need more information about EMF, please follow the tutorial available <a href="http://eclipsesource.com/blogs/tutorials/emf-tutorial/">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>A basic understanding of Eclipse IDE is also required because the examples have been compiled using Eclipse IDE.</p>
+</div>
+<div class="paragraph">
+<p>There is no need to understand Neo4j not graph databases to follow this tutorial.
+However, a basic understanding of Neo4j may help you to manipulate your models directly from the database.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installing_neoemf"><a class="anchor" href="#_installing_neoemf"></a>Installing NeoEMF</h3>
+<div class="paragraph">
+<p>NeoEMF is available as an Eclipse plugin.
+Install it by choosing <em>Help → Install New Software&#8230;&#8203;</em>.
+You will need to add the following software site:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://atlanmod.github.io/NeoEMF/releases/latest/plugin/" class="bare">https://atlanmod.github.io/NeoEMF/releases/latest/plugin/</a></p>
+</div>
+<div class="paragraph">
+<p>Select and install all items.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installing_emfatic"><a class="anchor" href="#_installing_emfatic"></a>Installing Emfatic</h3>
+<div class="paragraph">
+<p>Emfatic will be used as a text editor to create a simple Ecore model.
+It is also available as an Eclipse plugin.
+Install it by choosing <em>Help → Install New Software&#8230;&#8203;</em>.
+You will also need to add the following software site:</p>
+</div>
+<div class="paragraph">
+<p><a href="http://download.eclipse.org/emfatic/update" class="bare">http://download.eclipse.org/emfatic/update</a></p>
+</div>
+<div class="paragraph">
+<p>Select and install all items.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_new_emf_project"><a class="anchor" href="#_creating_a_new_emf_project"></a>Creating a New EMF Project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now create a new EMF project by choosing <em>File → New → Project&#8230;&#8203;</em> from the main menu.
+The dialog offers a couple of different project types.
+Select <em>Empty EMF Project</em> from the category <em>Eclipse Modeling Framework</em> and continue via <em>Next</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="http://neoemf.atlanmod.org/static/img/tutorial/NewEMFProject.png" alt="NewEMFProject">
+</div>
+</div>
+<div class="paragraph">
+<p>Feel free to use any name for your project ("NeoEMF Tutorial" would be great), and finish the wizard.</p>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_simple_ecore_model"><a class="anchor" href="#_creating_a_simple_ecore_model"></a>Creating a Simple Ecore Model</h3>
+<div class="paragraph">
+<p>To create and save an EMF resource, you first need an ECore Model.
+There are several ways to create an Ecore Model, here we use <a href="https://www.eclipse.org/emfatic/">EMFatic</a>, a textual syntax for ECore models.</p>
+</div>
+<div class="paragraph">
+<p>From the main menu, choose <em>File→ New → Other&#8230;&#8203;</em> and select <em>Emfatic file</em> from the category <em>Example EMF Creation Wizard</em>. Name your file "graph.emf".</p>
+</div>
+<div class="paragraph">
+<p>Edit your file to create a simple model specifying a simple graph structure, containing Edges and Vertices, and described below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@namespace(uri="http://atlanmod.neoemf.tutorial", prefix="graph")
+package graph;
+
+class Graph {
+  val Vertice[*] vertices;
+  val Edge[*] edges;
+}
+
+class Vertice {
+  attr String label;
+}
+
+class Edge {
+  ref Vertice from;
+  ref Vertice to;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An alternative textual syntax to create an Ecore Model is <a href="https://wiki.eclipse.org/OCL/OCLinEcore">OclInEcore</a>, which is quite similar to EMFatic.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_an_ecore_file"><a class="anchor" href="#_creating_an_ecore_file"></a>Creating an Ecore File</h3>
+<div class="paragraph">
+<p>Once the Emfatic file is ready, you need to generate a <em>.ecore</em> file.
+From the contextual menu (right-click on the <em>graph.emf</em> file), choose <em>Generate Ecore Model</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="http://neoemf.atlanmod.org/static/img/tutorial/GenerateEcoreModel.png" alt="GenerateEcoreModel">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_an_emf_generator_model"><a class="anchor" href="#_creating_an_emf_generator_model"></a>Creating an EMF Generator Model</h3>
+<div class="paragraph">
+<p>Now create a new EMF Generator Model by choosing <em>File → New → Other&#8230;&#8203;</em> from the main menu.
+The dialog offers a couple of different wizards.
+Select <em>EMF Generator Model</em> from the category <em>Eclipse Modeling Framework</em> and continue via <em>Next</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="http://neoemf.atlanmod.org/static/img/tutorial/NewEMFGeneratorModel.png" alt="NewEMFGeneratorModel">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_migrating_the_generator_model"><a class="anchor" href="#_migrating_the_generator_model"></a>Migrating the Generator Model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After generating the <code>graph.genmodel</code> file, you need to migrate it to NeoEMF.
+From the contextual menu, choose <em>NeoEMF → Migrate EMF Generator Model</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="http://neoemf.atlanmod.org/static/img/tutorial/MigrateEMFGeneratorModel.png" alt="MigrateEMFGeneratorModel">
+</div>
+</div>
+<div class="paragraph">
+<p>The migration will modify several properties in the <code>graph.genmodel</code> file.
+Basically, it will set the root Class and the root Interface of EMF Classes and Interfaces to use the NeoEMF persistent implementations.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="http://neoemf.atlanmod.org/static/img/tutorial/NeoEMFMigrator.png" alt="NeoEMFMigrator">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generating_emf_model_code"><a class="anchor" href="#_generating_emf_model_code"></a>Generating EMF Model Code</h3>
+<div class="paragraph">
+<p>After generating the <code>graph.genmodel</code> file, you will be able to generate the Java underlying code for this model.
+Select <em>Generate Model Code</em> from the Project Explorer contextual menu (right-click the <code>graph.genmodel</code> file)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="http://neoemf.atlanmod.org/static/img/tutorial/GenerateModelCode.png" alt="GenerateModelCode">
+</div>
+</div>
+<div class="paragraph">
+<p>The generation will add three new packages to your project.
+If you are familiar with the EMF generated code, you can browse the generated code to observe the differences between the default generated code and the NeoEMF one.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="http://neoemf.atlanmod.org/static/img/tutorial/AfterCodeGeneration.png" alt="AfterCodeGeneration">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_new_neoemf_resource"><a class="anchor" href="#_creating_a_new_neoemf_resource"></a>Creating a New NeoEMF resource</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the Ecore model is ready, we can create instances of this model and store them in a NeoEMF persistent resource.</p>
+</div>
+<div class="paragraph">
+<p><strong>Creating a resource</strong></p>
+</div>
+<div class="paragraph">
+<p>Creating a resource in NeoEMF is similar to standard EMF.
+Write down the following line to create a resource named "models/myGraph.graphdb" in your current Eclipse project.</p>
+</div>
+<div class="paragraph">
+<p><strong>NOTE:</strong>
+The following example concerns a Blueprints backend.
+Because all backends work in the same way, you can replace <code>BlueprintsTinkerConfig</code> and <code>BlueprintsUri</code> by the module-specific implementations of <code>Config</code> and <code>UriBuilder</code> related to the backend you want to use. For now, it can be <code>MapDb***</code> or <code>BerkeleyDB***</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">URI uri = new BlueprintsUriFactory().createLocalUri("models/myGraph.graphdb");
+
+ResourceSet resourceSet = new ResourceSetImpl();
+Resource resource = resourceSet .createResource(uri);
+
+ImmutableConfig config = new BlueprintsTinkerConfig();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Populating the resource</strong></p>
+</div>
+<div class="paragraph">
+<p>Now, write a simple code to create instances of the Graph model and to save the resource:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">GraphFactory factory = GraphFactory.eINSTANCE;
+Graph graph = factory.createGraph();
+
+for (int i = 0; i &lt; 100; i++) {
+  Vertice v1 = factory.createVertice();
+  v1.setLabel("Vertice " + i + "a");
+  Vertice v2 = factory.createVertice();
+  v2.setLabel("Vertice " + i + "b");
+  Edge e = factory.createEdge();
+  e.setFrom(v1);
+  e.setTo(v2);
+  graph.getEdges().add(e);
+  graph.getVertices().add(v1);
+  graph.getVertices().add(v2);
+}
+
+resource.getContents().add(graph);
+
+resource.save(config.asMap());
+resource.unload();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Reading the resource</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">resource.load(config.asMap());
+
+Graph graph = (Graph) resource.getContents().get(0);
+for (Edge each : graph.getEdges()) {
+  System.out.println(each.getFrom().getLabel() + "---&gt;" + each.getTo().getLabel());
+}
+
+resource.unload();</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conclusion"><a class="anchor" href="#_conclusion"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this tutorial, you have learned how to create a persistent EMF resource with NeoEMF and how to store this resource in a Neo4j database.
+All backends are identical in usage, the only thing that changes is the configuration and the URI definition, used to identify the module.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

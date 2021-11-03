@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: NeoEMF - Website</title>
+    <meta name="generator" content="Antora 3.0.0-alpha.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sunye.github.io/neoemf-website">NeoEMF - Website</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="NeoEMF" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">NeoEMF Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">NeoEMF</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">index.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">NeoEMF Project</span>
+    <span class="version">2.0.0 2.0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">NeoEMF Project</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.0.0 2.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/atlanmod/NeoEMF/edit/master/neoemf-doc/modules/user/pages/Supported-Backends.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="paragraph">
+<p>NeoEMF is designed to be easily extensible with new backends.
+The current version of the framework embeds three implementations that are optimized for specific modeling operations.</p>
+</div>
+<div class="paragraph">
+<p>NeoEMF currently supports these different backends:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>MapDB</strong>: relies on <a href="http://www.mapdb.org">MapDB</a> on-disk maps to store model elements.
+This backend has been designed to provide fast access to atomic operations, such as accessing a single element/attribute and navigating a single reference.
+This implementation is optimized for EMF API-based accesses which typically generates this kind of atomic and fragmented queries calls on the model.</p>
+<div class="paragraph">
+<p><strong>WARNING:</strong> Can be very slow on Windows (see <a href="https://github.com/jankotek/mapdb/issues/789">jankotek/mapdb#789</a> for more information)</p>
+</div>
+</li>
+<li>
+<p><strong>BerkeleyDB</strong>: relies on <a href="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview">BerkeleyDB</a> on-disk maps to store model elements.
+Very similar to MapDB.</p>
+</li>
+<li>
+<p><strong>Blueprints</strong>: relies on the <a href="https://github.com/tinkerpop/blueprints/wiki">Tinkerpop Blueprints</a> to access graph databases.
+The current implementation embeds a Neo4j wrapper for convenience purposes, but Blueprints also allows to access any NoSQL database implementing the Tinkerpop stack, such as <a href="http://orientdb.com">OrientDB</a> or <a href="http://titan.thinkaurelius.com">Titan</a>.
+This backend has been designed to benefit from the rich traversal features that graph databases provide, such as fast shortest-path computation, or efficient processing of complex navigation paths.
+These advanced query capabilities have been used in the <a href="https://github.com/atlanmod/Mogwai">Mogwaï</a> tool that maps OCL expressions to graph traversals.</p>
+</li>
+<li>
+<p><strong>HBase</strong>: relies on the distributed nature of the column-based datastore to enable the development of distributed MDE-based applications.
+In contrast with the previous implementations, the <a href="https://hbase.apache.org">HBase</a> backend offers concurrent read/write capabilities and guarantees ACID properties at model element level.
+It exploits the wide availability of distributed clusters in order to distribute intensive read/write workloads across datanodes.
+The distributed nature of this persistence solution is used in the <a href="https://github.com/atlanmod/org.eclipse.atl.atlMR">ATL-MR</a> tool, a distributed engine for model transformations in the ATL language on top of MapReduce.</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_versions"><a class="anchor" href="#_versions"></a>Versions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The table below summarizes the versions of each backend that are currently supported by NeoEMF.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Backend</th>
+<th class="tableblock halign-left valign-top">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default in-memory (ChronicleMap)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.14.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blueprints</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.6.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Neo4j<sup><a href="#fn1">1</a></sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1.8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MapDB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BerkeleyDB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0.73</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HBase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hadoop<sup><a href="#fn2">2</a></sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.8.2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><sup>1</sup>
+Neo4j is supported through the Blueprints interface.</p>
+</div>
+<div class="paragraph">
+<p><sup>2</sup>
+Hadoop is internally used by the HBase implementation.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: NeoEMF - Website</title>
+    <meta name="generator" content="Antora 3.0.0-alpha.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sunye.github.io/neoemf-website">NeoEMF - Website</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="NeoEMF" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">NeoEMF Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">NeoEMF</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">index.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">NeoEMF Project</span>
+    <span class="version">2.0.0 2.0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">NeoEMF Project</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.0.0 2.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/atlanmod/NeoEMF/edit/master/neoemf-doc/modules/developer/pages/Naming-Conventions.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="paragraph">
+<p>This page references the package and class naming conventions used in NeoEMF.
+Please make sure to follow these rules if you want to <a href="How-To-Contribute">contribute to the framework</a>, this will ease future discussions and speed-up the integration of your code.</p>
+</div>
+<div class="sect1">
+<h2 id="_package_names"><a class="anchor" href="#_package_names"></a>Package Names</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NeoEMF packages group classes per feature and not by layers.
+For example the package <code>fr.inria.atlanmod.neoemf.resource</code> contains both classes and interfaces related to EMF Resource management.
+We don&#8217;t use sub-packages such as <code>impl</code>, <code>beans</code>, <code>exceptions</code>, etc.</p>
+</div>
+<div class="paragraph">
+<p>Package names are defined by singular words. Since each package describes a feature, the name of the feature should be used as the name of package.</p>
+</div>
+<div class="paragraph">
+<p>Backend-specific classes extending abstract classes of the <code>core</code> component are defined in a package with the same name as the <code>core</code> one.
+For example, the <code>MapDbUriFactory</code> class is defined in the package  <code>fr.inria.atlanmod.neoemf.data.mapdb.util</code>, because it extends the class <code>UriFactory</code> defined in the package <code>fr.inria.atlanmod.neoemf.util</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_new_features"><a class="anchor" href="#_new_features"></a>New Features</h3>
+<div class="paragraph">
+<p>You can replace the package prefix <code>fr.inria.atlanmod</code> with the one of your institution/organization if you <a href="How-To-Contribute">submit a pull request</a> containing a new feature.
+If your pull request contains a backend implementation make sure the corresponding code is stored in its own folder following this pattern:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">/neoemf-data/&lt;backend_implementation_name&gt;/</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_class_names"><a class="anchor" href="#_class_names"></a>Class Names</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Class names must be simple and self-describing.</p>
+</div>
+<div class="paragraph">
+<p>Use the <em>Default</em> prefix for classes that are the only implementation of their interface.
+For example the class <code>DefaultPersistentResource</code> is the only implementation of the <code>PersistentResource</code> interface.</p>
+</div>
+<div class="sect2">
+<h3 id="_configurationuri_subclasses"><a class="anchor" href="#_configurationuri_subclasses"></a>Configuration/URI subclasses</h3>
+<div class="paragraph">
+<p>Classes implementing <code>Config</code> should be suffixed with <em>Config</em>.</p>
+</div>
+<div class="paragraph">
+<p>Classes implementing <code>UriFactory</code> should be suffixed with <em>UriFactory</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_data_subclasses"><a class="anchor" href="#_data_subclasses"></a>Data subclasses</h3>
+<div class="paragraph">
+<p>Classes implementing <code>Backend</code> and <code>BackendFactory</code> should be suffixed with <em>Backend</em> and <em>BackendFactory</em>, respectively.</p>
+</div>
+<div class="paragraph">
+<p>Classes implementing <code>Store</code> should be suffixed with <em>Store</em>.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

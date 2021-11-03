@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: NeoEMF - Website</title>
+    <meta name="generator" content="Antora 3.0.0-alpha.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sunye.github.io/neoemf-website">NeoEMF - Website</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="NeoEMF" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">NeoEMF Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">NeoEMF</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">index.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">NeoEMF Project</span>
+    <span class="version">2.0.0 2.0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">NeoEMF Project</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.0.0 2.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/atlanmod/NeoEMF/edit/master/neoemf-doc/modules/user/pages/Releases.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="paragraph">
+<p>This page lists all the available releases of the tool.Latest available release is always presented first. Previous releases are listed to keep a trace of the changes, but shouldn&#8217;t be used if a newer version is available. Note that you can also check the ongoing modifications in the <a href="https://github.com/atlanmod/NeoEMF/blob/master/CHANGELOG.md">CHANGELOG.MD</a> file at the root of the project repository.</p>
+</div>
+<div class="sect1">
+<h2 id="_1_0_2_latest_2017_06_06"><a class="anchor" href="#_1_0_2_latest_2017_06_06"></a>1.0.2 (<em>Latest</em>) - 2017-06-06</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/atlanmod/NeoEMF/releases/tag/v1.0.2">Release Notes</a> | <a href="https://github.com/atlanmod/NeoEMF/archive/v1.0.2.zip">Download Sources</a> | <a href="https://atlanmod.github.io/NeoEMF/releases/1.0.2/plugin/">Update Site</a></p>
+</div>
+<div class="sect2">
+<h3 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h3>
+<div class="paragraph">
+<p>We fixed a set of bugs we found in our experiments and we received in users' feedbacks. Thanks for helping us improving the tool! We also integrated a new experimental integration with EMF Compare, allowing to compare NeoEMF models to other EMF-based models. This feature will remain experimental until the next major release that will remove conflicting Guava dependencies.</p>
+</div>
+<div class="paragraph">
+<p>We also merged the common features of MapDB and BerkeleyDB backends to improve maintainability and reusability of map-based serialization components.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_changelog"><a class="anchor" href="#_changelog"></a>Changelog</h3>
+<div class="sect3">
+<h4 id="_new_features"><a class="anchor" href="#_new_features"></a>New Features</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Add experimental EMF Compare integration (will stay experimental as long as Guava issues remain)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bug_fixes"><a class="anchor" href="#_bug_fixes"></a>Bug Fixes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed <a href="https://github.com/atlanmod/NeoEMF/issues/53">Issue #53</a>: WildCardType '?' in sample (mapdb) throws an exception when accessed in the Editor</p>
+</li>
+<li>
+<p>Fixed <a href="https://github.com/atlanmod/NeoEMF/issues/54">Issue #54</a>: AbstractDirectWrite.toArray is not efficient</p>
+</li>
+<li>
+<p>Fixed <a href="https://github.com/atlanmod/NeoEMF/issues/55">Issue #55</a>: DefaultPersistentEObject.eContainer is not efficient</p>
+</li>
+<li>
+<p>Fixed <a href="https://github.com/atlanmod/NeoEMF/issues/56">Issue #56</a>: Unnecessary backend lookups in Store.eObject(Id)</p>
+</li>
+<li>
+<p>Fixed <a href="https://github.com/atlanmod/NeoEMF/issues/68">Issue #68</a>: Creating contained objects with Epsilon does not work</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_back_ends"><a class="anchor" href="#_back_ends"></a>Back-ends</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Merge common code from MapDB &amp; BerkeleyDB in Map module</p>
+</li>
+<li>
+<p>BerkeleyDB remains an experimental backend until the next major release</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_0_1_2017_01_16"><a class="anchor" href="#_1_0_1_2017_01_16"></a>1.0.1 - 2017-01-16</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/atlanmod/NeoEMF/releases/tag/v1.0.1">Release Notes</a> | <a href="https://github.com/atlanmod/NeoEMF/archive/v1.0.1.zip">Download Sources</a> | <a href="https://atlanmod.github.io/NeoEMF/releases/1.0.1/plugin/">Update Site</a></p>
+</div>
+<div class="sect2">
+<h3 id="_summary_2"><a class="anchor" href="#_summary_2"></a>Summary</h3>
+<div class="paragraph">
+<p>Core modularization to ease new backend integration: all the supported backends are now defined as sub-project of the <code>data</code> module. The <code>Logger</code> has been updated to work in a dedicated thread, limiting its impact on the application performance. We have improved and rewritten a large part of the JavaDoc and published it on <a href="https://atlanmod.github.io/NeoEMF/releases/latest/doc/">NeoEMF website</a>. Tests are not modular and can be executed on all the supported backends, this allows to develop high quality implementations that benefit of existing tests. We also fixed few issues and updated the dependencies with the latest EMF release. See the <a href="#changelog">changelog</a> for a complete description of the updates.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_changelog_2"><a class="anchor" href="#_changelog_2"></a>Changelog</h3>
+<div class="sect3">
+<h4 id="_structure"><a class="anchor" href="#_structure"></a>Structure</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>datastore</code> packages become <code>data</code></p>
+</li>
+<li>
+<p>Backend implementations are now placed under the <code>fr.inria.atlanmod.neoemf.data</code> package</p>
+</li>
+<li>
+<p><code>graph</code> package is replaced by <code>data</code>: no more structural differentiation in the package structure</p>
+</li>
+<li>
+<p><code>***Map***</code> classes representing the MapDB implementation are replaced by <code>***MapDb***</code></p>
+</li>
+<li>
+<p>Generalization of <code>PersistenceURI</code> and its sub-classes</p>
+</li>
+<li>
+<p>Addition of new common annotations: <code>@VisibleForTesting</code> and <code>@Experimental</code></p>
+</li>
+<li>
+<p><code>Logger</code> is now fully-concurrent and extensible: We can use different parallel <code>Logger</code>s. However, these loggers keep the call order.</p>
+</li>
+<li>
+<p>Generalization <code>BundleActivator</code>s</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_back_ends_2"><a class="anchor" href="#_back_ends_2"></a>Back-ends</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Integration of a new key-value backend implementation: BerkeleyDB <em>(experimental)</em>.</p>
+</li>
+<li>
+<p><code>ClassInfo</code> and <code>ContainerInfo</code> have now static constructor methods: <code>from()</code> and <code>of()</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tests"><a class="anchor" href="#_tests"></a>Tests</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Contextualization of tests: One test-case can be executed by several back-end implementations according to the current <code>Context</code> defined by <code>@Parameterized.Parameters</code></p>
+</li>
+<li>
+<p>Test-cases are now tagged</p>
+</li>
+<li>
+<p>Preparation of tests for a future integration of JUnit 5</p>
+</li>
+<li>
+<p>Externalization JUnit <code>Rule</code>s</p>
+</li>
+<li>
+<p>Reorganization of <code>@After</code>/<code>@Before</code> methods</p>
+</li>
+<li>
+<p><code>All***</code> classes become <code>Abstract***</code></p>
+</li>
+<li>
+<p>Remove <code>NeoAssertions</code> class and its related custom <code>Builder</code>s</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_documentation"><a class="anchor" href="#_documentation"></a>Documentation</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>JavaDoc has been completely revised and completed.</p>
+</li>
+<li>
+<p>Addition of new JavaDoc tags: <code>@future</code> and <code>@note</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bug_fixes_2"><a class="anchor" href="#_bug_fixes_2"></a>Bug Fixes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed <a href="https://github.com/atlanmod/NeoEMF/issues/51">issue #51</a>: Concurrent <code>Executor</code> in <code>Logger</code> did not stop with the JVM</p>
+</li>
+<li>
+<p>Fixed <a href="https://github.com/atlanmod/NeoEMF/issues/52">issue #52</a>: Partial fix with a <code>try...catch</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dependencies"><a class="anchor" href="#_dependencies"></a>Dependencies</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Added OSGI dependency <code>org.osgi</code>: <code>6.0.0</code></p>
+</li>
+<li>
+<p>Removed OSGI implementation dependency <code>org.eclipse.osgi</code></p>
+</li>
+<li>
+<p>Upgraded <code>org.eclipse.emf:***</code> dependencies from <code>2.11.0</code> to <code>2.12.0</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_1_0_0_2016_12_06"><a class="anchor" href="#_1_0_0_2016_12_06"></a>1.0.0 - 2016-12-06</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/atlanmod/NeoEMF/releases/tag/v1.0.0">Release Notes</a> | <a href="https://github.com/atlanmod/NeoEMF/archive/v1.0.0.zip">Download Sources</a> | <a href="https://atlanmod.github.io/NeoEMF/releases/1.0.0/plugin/">Update Site</a></p>
+</div>
+<div class="paragraph">
+<p>Initial release of the tool. This first release defines the core components of the framework and the supported backends.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Core API defninition</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Extension of the EMF API with PersistentResource and PersistentEObject</p>
+</li>
+<li>
+<p>Abstract backend architecture</p>
+</li>
+<li>
+<p>Support for persistent and transient backends</p>
+</li>
+<li>
+<p>Enhanced <em>load/save</em> mechanism to support NeoEMF options</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Support for Blueprints databases</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Complete model-to-Blueprints mapping</p>
+</li>
+<li>
+<p>Neo4j convenience wrapper</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Support for MapDB databases</p>
+</li>
+<li>
+<p>Support for HBase databases</p>
+</li>
+<li>
+<p>IO module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Efficient XMI-to-Blueprints parser</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Benchmarks for all the supported backends</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Comparison with the default XMI serialization</p>
+</li>
+<li>
+<p>Comparison with CDO</p>
+</li>
+<li>
+<p>Model traversal queries</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Experimental Results :: NeoEMF - Website</title>
+    <meta name="generator" content="Antora 3.0.0-alpha.10">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://sunye.github.io/neoemf-website">NeoEMF - Website</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="NeoEMF" data-version="2.0.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">NeoEMF Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">NeoEMF</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">index.adoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">NeoEMF Project</span>
+    <span class="version">2.0.0 2.0.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">NeoEMF Project</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">2.0.0 2.0.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">NeoEMF Project</a></li>
+    <li><a href="Experimental-Results.html">Experimental Results</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/atlanmod/NeoEMF/edit/master/neoemf-doc/modules/research/pages/Experimental-Results.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Experimental Results</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page summarizes the results presented in the different <a href="Publications">articles</a> we have published and the existing projects that integrate NeoEMF as their model perssitence solution.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_neoemfmapdb"><a class="anchor" href="#_neoemfmapdb"></a>NeoEMF/MapDB</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NeoEMF MapDB connector has been compared to CDO and XMI serialization in <a href="https://hal.inria.fr/hal-01140776/document">this article</a>.</p>
+</div>
+<div class="paragraph">
+<p>We evaluate the performance of our proposal by comparing different solutions in the running scenario.
+Based on our joint experience with industrial partners, we have reverse-engineered three models from open-source Java projects whose sizes resemble those one can find in real world scenarios (see Table 1).
+Moreover, we have defined a set of queries that are executed on those models.
+The first of these queries is a well-known scenario in <a href="http://is.tm.tue.nl/staff/pvgorp/events/grabats2009/submissions/grabats2009_submission_20-final.pdf">academic literature</a>.
+The others have been selected to mimic typical model access patterns in reverse engineering</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">#</th>
+<th class="tableblock halign-left valign-top">Models</th>
+<th class="tableblock halign-right valign-top">Size in XMI</th>
+<th class="tableblock halign-right valign-top">Elements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.gmt.modisco.java</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">19.3 MB</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">80665</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.jdt.core</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">420.6 MB</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1557007</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.jdt.*</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">984.7 MB</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">3609454</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Table 1:</strong> Summary of the Experimental Models</p>
+</div>
+<div class="sect2">
+<h3 id="_selected_backends_and_execution_environment"><a class="anchor" href="#_selected_backends_and_execution_environment"></a>Selected backends and execution environment</h3>
+<div class="paragraph">
+<p>We have selected NeoEMF/Map, NeoEMF/Graph and CDO for a thorough comparison.
+Only the standard EMF interface methods are used in the experiments that are hence agnostic of which backend they are running on.
+Other backends have been discarded because they do not strictly comply with the standard EMF behavior (e.g. MongoEMF), they require manual modifications in the source models or metamodels (e.g. EMF-fragments), or because we were only able to run a small subset of the experiments on them (e.g. Morsa).</p>
+</div>
+<div class="paragraph">
+<p>All backends use their respective native EMF generated code for the Java MoDisco metamodel and have been tested in their default configurations with the following exceptions:
+(i) the timeout values for CDO have been increased since the default ones are too low;
+(ii) for the sake of a fairer comparison, some extended features have been disabled in CDO (e.g. audit views and branches);
+and (iii) the Neo4j memory buffers have been tweaked in NeoEMF/Graph to reduce the memory consumption of the embedded Neo4j engine.
+CDO maintains its caching and prefetching facilities with their default values. In the case of NeoEMF/Map and NeoEMF/Graph no high-level caching is performed.</p>
+</div>
+<div class="paragraph">
+<p>Experiments are run on a laptop with the following configuration:
+Intel Core i7 3740QM (2.70GHz),
+16 GB of DDR3 SDRAM (800MHz),
+Samsung SM841 SATA3 SSD Hard Disk (6GB/s),
+Windows 7 Enterprise 64,
+JRE 1.7.0_40-b43,
+Eclipse 4.4.0,
+EMF 2.10.1,
+NeoEMF/Map uses MapDB 0.9.10,
+NeoEMF/Graph uses Neo4j 1.9.2,
+CDO 4.3.1 runs on top of H2 1.3.168</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_experiments"><a class="anchor" href="#_experiments"></a>Experiments</h3>
+<div class="sect3">
+<h4 id="_experiment_iimport_model_from_xmi"><a class="anchor" href="#_experiment_iimport_model_from_xmi"></a>Experiment I&#8201;&#8212;&#8201;Import model from XMI</h4>
+<div class="paragraph">
+<p>In this experiment (Table 2) we measure the time taken to load a source experimental model&#8201;&#8212;&#8201;that has been previously derived from the Java code and saved in XMI&#8201;&#8212;&#8201;and to save it in the selected persistence backend.
+The saved models are the ones used in next experiments.
+This experiment measures the time taken to create models that grow monotonically.
+Only a single configuration (setting the heap size to 8 GB) is used because the XMI model should be completely loaded into memory before saving it in the backend under study.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_experiment_iisimple_model_traversal"><a class="anchor" href="#_experiment_iisimple_model_traversal"></a>Experiment II&#8201;&#8212;&#8201;Simple Model traversal</h4>
+<div class="paragraph">
+<p>In this experiment we measure the total time taken to load a model, execute a visitor and unload a model.
+The visitor traverses the full containment tree starting from the root of the model.
+At each step of the traversal the visitor loads the element content from the backend.
+We show the results for the three scalable backends plus the standard XMI-based one.
+Three different maximum heap sizes have been used in this and the following benchmarks to demonstrate how the different backends perform in different configurations: 8GB for demonstrating the performance in an ideal scenario, and 512MB and 256MB to demonstrate how the loading/unloading mechanisms behave in setups with extremely limited memory.
+Table 3 shows the results of this experimentation over the test models.NeoEMF/Map and NeoEMF/Graph are abbreviated as N/M and N/G respectively.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_experiment_iiiquery_without_full_traversal"><a class="anchor" href="#_experiment_iiiquery_without_full_traversal"></a>Experiment III&#8201;&#8212;&#8201;Query without full traversal</h4>
+<div class="paragraph">
+<p>Results of an example query of this type are shown in Table 4.
+The query returns all the orphan and non-primitive types by navigating and filtering the <em>orphanTypes</em> association.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_experiment_ivqueries_with_full_traversal"><a class="anchor" href="#_experiment_ivqueries_with_full_traversal"></a>Experiment IV&#8201;&#8212;&#8201;Queries with full traversal</h4>
+<div class="paragraph">
+<p>These queries start their computation by accessing the list of all the instances of a particular element type, and then apply a filtering to this list to select the starting points for navigating the model.
+In the experience of our industrial partners, this pattern covers the majority of computational-demanding queries in real world scenarios of the reverse-engineering domain.
+While the first of these queries is well-known in academic literature, the others have been selected to mimic typical model access patterns:
+(i) Grabats returns the set of classes that hold static method declarations having as return type the holding class (i.e., Singleton);
+(ii) Unused Methods returns the set of method declarations that are private and not internally called;
+(iii) Thrown Exceptions per package collects and returns a map of Packages with the Exceptions that may be thrown by any of the methods declared by its contained classes;
+(iv) Invisible Methods returns the set of method declarations that are private or protected;
+and (v) Class Declaration Attributes returns a map associating each Class declaration to the set of its attribute declarations.
+Table 5 summarizes the obtained results.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_experiment_vmodel_modification_and_saving"><a class="anchor" href="#_experiment_vmodel_modification_and_saving"></a>Experiment V&#8201;&#8212;&#8201;Model modification and saving</h4>
+<div class="paragraph">
+<p>The last experiment aims to measure the overhead introduced by the transactional support provided by the different back-ends.
+Table 6 shows the execution times for renaming all method declarations and saving the modified model.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Model</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Map</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Graph</th>
+<th class="tableblock halign-right valign-top">CDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">41 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">12 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">161 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1161 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">120 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">412 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">3767 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">301 s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Table 2:</strong> Import model from XMI</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Model</th>
+<th class="tableblock halign-right valign-top">XMI</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Map</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Graph</th>
+<th class="tableblock halign-right valign-top">CDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">4 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">3 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">16 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">14 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">35 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">25 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">201 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">133 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">79 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">62 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">708 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">309 s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Table 3 (1):</strong> Model traversals (includes loading and unloading time) - Xmx8g</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Model</th>
+<th class="tableblock halign-right valign-top">XMI</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Map</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Graph</th>
+<th class="tableblock halign-right valign-top">CDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">4 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">3 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">15 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">13 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><em>OutOfMemoryError</em></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">121 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">239 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">650 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><em>OutOfMemoryError</em></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">443 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">783 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">403 s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Table 3 (2):</strong> Model traversals (includes loading and unloading time) - Xmx256m</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Model</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Map</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Graph</th>
+<th class="tableblock halign-right valign-top">CDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">&lt; 1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">&lt; 1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">&lt; 1 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">&lt; 1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">2 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">&lt; 1 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">&lt; 1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">19 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">2 s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Table 4 (1):</strong> Model queries that do not traverse the model - Xmx8g</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Model</th>
+<th class="tableblock halign-left valign-top">NeoEMF/Map</th>
+<th class="tableblock halign-left valign-top">NeoEMF/Graph</th>
+<th class="tableblock halign-left valign-top">CDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt; 1 s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt; 1 s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt; 1 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt; 1 s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt; 1 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt; 1 s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Table 4 (2):</strong> Model queries that do not traverse the model - Xmx256m</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Query</th>
+<th class="tableblock halign-left valign-top">Model</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Map</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Graph</th>
+<th class="tableblock halign-right valign-top">CDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Grabats</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">24 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">188 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">121 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">61 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">717 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">299 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unused Methods</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">2 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">17 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">36 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">359 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">131 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">101 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1328 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">294 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thrown Exceptions Per Package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">10 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">24 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">184 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">120 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">62 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">678 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">296 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invisible Methods</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">26 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">263 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">119 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">119 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">3247 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">320 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class Declaration Attributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">10 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">24 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">183 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">120 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">61 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">694 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">294 s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Table 5 (1):</strong> Model queries that traverse the model - Xmx8g</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Query</th>
+<th class="tableblock halign-left valign-top">Model</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Map</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Graph</th>
+<th class="tableblock halign-right valign-top">CDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Grabats</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">127 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">228 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">665 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">480 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">774 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">479 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unused Methods</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">16 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">336 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">467 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1034 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1290 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1818 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><em>OutOfMemoryError</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thrown Exceptions Per Package</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">10 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">8 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">119 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">224 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">666 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">450 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">758 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">427 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invisible Methods</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">158 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">733 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">190 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">496 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">&gt; 2 h</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1404 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class Declaration Attributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">10 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">8 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">156 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">226 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">670 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">457 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">756 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">460 s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Table 5 (2):</strong> Model queries that traverse the model - Xmx256m</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Model</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Map</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Graph</th>
+<th class="tableblock halign-right valign-top">CDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">24 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">191 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">118 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">62 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">677 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">296 s</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Table 6 (1):</strong> Model modification and saving - Xmx8g</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Model</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Map</th>
+<th class="tableblock halign-right valign-top">NeoEMF/Graph</th>
+<th class="tableblock halign-right valign-top">CDO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">160 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">224 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">723 s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">472 s</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><em>OutOfMemoryError</em></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><em>OutOfMemoryError</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Table 6 (1):</strong> Model modification and saving - Xmx256m</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_discussion"><a class="anchor" href="#_discussion"></a>Discussion</h3>
+<div class="paragraph">
+<p>From the analysis of the results, we can observe that NeoEMF/Map performs, in general, better than any other solution when using the standard API.
+Only in scenarios with constrained memory the execution times tend equalize due to excessive garbage collection.
+Nevertheless, other persistence backends tend to be more erratic in those scenarios, running out of memory or presenting big differences in computation times between experiments.
+In the XMI import experiment (Table 6) we can observe that NeoEMF/Map presents import times in the the same order of magnitude than CDO, but it is about a 33% slower for the largest model.
+The simple data model with low-cost operations implemented by NeoEMF/Map contrasts with the more complex data model&#8212;&#8203;and operations&#8212;&#8203;implemented by NeoEMF/Graph which is consistently slower by a factor between 7 and 9.
+It can be observed that NeoEMF/Map is affected by the overhead produced by modifications on big lists that grow monotonically since it does not implement any caching yet.
+Table 7 shows that a traversal of a very large model is much faster (up to 9 times) by using the NeoEMF/Map persistence layer with respect to both a CDO and NeoEMF/Graph.
+However, in scenarios with very constrained memory, some garbage collection overhead can be noticed.
+Additionally, if load and unload times are considered (which are negligible for NeoEMF/Map, NeoEMF/Graph and CDO), NeoEMF/Map also outperforms XMI.
+This is because before executing the traversal, the XMI-based backend needs to parse the whole input model, which is a costly operation.
+It can also be observed that XMI is unable to load the model into memory for small heap sizes.</p>
+</div>
+<div class="paragraph">
+<p>Queries that do not require traversing a large part of the model are computed in a negligible time both in NeoEMF/Map and CDO.
+NeoEMF/Graph shows higher execution times, specially on bigger models (Table 8).
+In this case, it can be observed that using the rich graph-based data model cannot be exploited when using the standard methods for model traversal.
+The fast model-traversal ability of NeoEMF/Map is exploited by the pattern followed by most of the queries in the modernization domain (Table 9).
+As a result, NeoEMF/Map is consistently faster than other backends for all queries, model sizes and heap sizes.
+Only in few cases NeoEMF/Map has similar performance to CDO, while in other scenarios NeoEMF/Map is up to 9 times faster.
+The low memory consumption of NeoEMF/Map also is revealed, since there appear cases in which CDO behaves more erratically, running out of memory or experiencing slowness issues caused by the garbage collector.
+Typical queries that traverse the model to apply and persist changes perform, in general, significantly better on NeoEMF/Map (Table 10): 5 times faster on average (on big models) and even up to 9 faster (on small models).
+In cases with limited memory, however, CDO may present better results than NeoEMF/Map due to garbage collection overhead.
+Nevertheless, this is not always the case, and CDO also reveals its tendency to run out of memory in such scenarios</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
