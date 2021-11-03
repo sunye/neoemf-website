@@ -1,0 +1,28 @@
+image:
+  name: jagedn/antora-with-extensions
+
+before_script:
+  - export https_proxy=http://proxy-serveur.univ-nantes.prive:3128
+  - export http_proxy=http://proxy-serveur.univ-nantes.prive:3128
+  - npm config set registry http://registry.npmjs.org/
+  - npm config set proxy http://proxy-serveur.univ-nantes.prive:3128
+  - npm config set https-proxy http://proxy-serveur.univ-nantes.prive:3128
+  - npm config set http-proxy http://proxy-serveur.univ-nantes.prive:3128
+  - npm set strict-ssl false
+
+variables:
+  HTTPS_PROXY: "http://proxy-serveur.univ-nantes.prive:3128"
+  HTTP_PROXY: "http://proxy-serveur.univ-nantes.prive:3128"
+  http_proxy: "http://proxy-serveur.univ-nantes.prive:3128"
+  https_proxy: "http://proxy-serveur.univ-nantes.prive:3128"
+  
+pages:
+  stage: deploy
+  cache:
+    paths:
+    - .cache/
+  script:
+  - antora --stacktrace --fetch --cache-dir .cache/antora --attribute page-pagination= --to-dir public antora-playbook.yml
+  artifacts:
+    paths:
+    - public/
