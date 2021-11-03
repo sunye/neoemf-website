@@ -22,7 +22,7 @@ pages:
     paths:
     - .cache/
   script:
-  - antora --stacktrace --fetch --cache-dir .cache/antora --attribute page-pagination= --to-dir public antora-playbook.yml
+  - antora -r ./git-plugin-http-with-proxy-support.js --stacktrace --fetch --cache-dir .cache/antora --attribute page-pagination= --to-dir public antora-playbook.yml
   artifacts:
     paths:
     - public/
