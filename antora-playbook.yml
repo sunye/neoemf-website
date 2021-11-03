@@ -2,9 +2,6 @@ site:
   title: NeoEMF - Website
   url: https://neoemf.atlanmod.org/
   start_page: NeoEMF:ROOT:index.adoc
-network:
-  http_proxy: http://proxy-serveur.univ-nantes.prive:3128
-  https_proxy: http://proxy-serveur.univ-nantes.prive:3128
 asciidoc:
   attributes:
     :plantuml-server-url: http://www.plantuml.com/plantuml
