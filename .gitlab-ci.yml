@@ -9,6 +9,7 @@ before_script:
   - npm config set https-proxy http://proxy-serveur.univ-nantes.prive:3128
   - npm config set http-proxy http://proxy-serveur.univ-nantes.prive:3128
   - npm set strict-ssl false
+  - npm install
 
 variables:
   HTTPS_PROXY: "http://proxy-serveur.univ-nantes.prive:3128"
