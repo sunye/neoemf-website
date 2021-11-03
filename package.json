@@ -1,9 +1,7 @@
 {
   "dependencies": {
-    "asciidoctor-plantuml": "^1.5.0",
-    "@antora/cli": "~2.3",
-    "@antora/site-generator-default": "~2.3",
-    "proxy-agent": "~4.0"
+    "asciidoctor-plantuml",
+    "@antora/cli",
+    "@antora/site-generator-default@testing"
     }
-  
 }
