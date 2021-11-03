@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: '14'
       - name: Install Antora
-        run: npm i --no-optional --silent 
+        run: npm install
       - name: Run Antora
         run: $(npm bin)/antora --fetch antora-playbook.yml
       - name: Publish to GitHub Pages
