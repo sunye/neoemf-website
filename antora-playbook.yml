@@ -20,3 +20,6 @@ runtime:
   cache_dir: ./.cache/antora
 output:
   dir: ./public
+network:
+  http_proxy: http://proxy-serveur.univ-nantes.prive:3128
+  https_proxy: http://proxy-serveur.univ-nantes.prive:3128
