@@ -9,7 +9,7 @@ asciidoc:
   - asciidoctor-plantuml
 content:
   sources:
-  - url: ../NeoEMF
+  - url: https://github.com/atlanmod/NeoEMF.git
     branches: HEAD, main
     start_path: neoemf-doc
 ui:
