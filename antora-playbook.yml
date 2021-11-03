@@ -18,6 +18,6 @@ ui:
 runtime:
   cache_dir: ./.cache/antora
 output:
-  dir: ./public/site
+  dir: ./build/site
 
 
