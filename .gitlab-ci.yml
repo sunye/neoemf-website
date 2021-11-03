@@ -1,5 +1,5 @@
 image:
-  name: antora/antora
+  name: antora/antora:3.0.0-alpha.10
 
 before_script:
   - export https_proxy=http://proxy-serveur.univ-nantes.prive:3128
